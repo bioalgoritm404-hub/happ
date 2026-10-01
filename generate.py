@@ -7,8 +7,7 @@ import uuid
 import requests
 
 SUBS_FILE = "my_subs.json"
-MAX_NODES_PER_FILE = 60
-
+MAX_NODES_PER_FILE = 80
 ALLOWED_NETWORKS = {"tcp", "raw", "grpc", "ws", "websocket", "xhttp", "splithttp"}
 
 def is_valid_uuid(val):
@@ -45,7 +44,7 @@ def get_clean_links():
                     if line.startswith("vless://"):
                         raw_links.append(line)
         except Exception as e:
-            print(f"Пропуск {url}: {e}")
+            print(f"Ошибка загрузки {url}: {e}")
 
     return list(dict.fromkeys(raw_links))
 
@@ -60,11 +59,8 @@ def resolve_ip(host):
             return None
 
 def fetch_countries(ips):
-    """Пакетный запрос GeoIP через бесплатный batch API"""
     ip_to_country = {}
     unique_ips = list(set(filter(None, ips)))
-    
-    # Режем пачками по 100 штук
     for i in range(0, len(unique_ips), 100):
         chunk = unique_ips[i:i+100]
         payload = [{"query": ip, "fields": "query,countryCode"} for ip in chunk]
@@ -73,9 +69,8 @@ def fetch_countries(ips):
             if res.status_code == 200:
                 for item in res.json():
                     ip_to_country[item.get("query")] = item.get("countryCode", "UNKNOWN")
-        except Exception as e:
-            print(f"Ошибка GeoIP: {e}")
-
+        except Exception:
+            pass
     return ip_to_country
 
 def parse_node(link, tag):
@@ -90,7 +85,6 @@ def parse_node(link, tag):
 
         params = dict(urllib.parse.parse_qsl(u.query))
         raw_net = clean(params.get("type", "tcp")).lower()
-
         if raw_net not in ALLOWED_NETWORKS:
             return None, None
 
@@ -194,27 +188,15 @@ def build_full_config(nodes, config_name):
             "disableCache": False,
             "queryStrategy": "UseIPv4",
             "serveStale": True,
-            "hosts": {
-                "cloudflare-dns.com": ["1.1.1.1", "1.0.0.1"],
-                "dns.google": ["8.8.8.8", "8.8.4.4"],
-                "localhost": "127.0.0.1"
-            },
             "servers": [
                 {
-                    "address": "tcp+local://77.88.8.8:53",
-                    "domains": [
-                        "full:dns.google",
-                        "full:cloudflare-dns.com",
-                        "full:localhost",
-                        "domain:local",
-                        "domain:lan"
-                    ],
-                    "queryStrategy": "UseIPv4",
-                    "skipFallback": True,
-                    "timeoutMs": 4000
+                    "address": "77.88.8.8",
+                    "port": 53,
+                    "domains": ["domain:ru", "domain:su", "domain:xn--p1ai"],
+                    "skipFallback": True
                 },
-                "https://dns.google/dns-query",
-                "https://cloudflare-dns.com/dns-query"
+                "1.1.1.1",
+                "8.8.8.8"
             ],
             "tag": "dns-remote"
         },
@@ -239,11 +221,7 @@ def build_full_config(nodes, config_name):
                 "listen": "127.0.0.1",
                 "port": 10853,
                 "protocol": "dokodemo-door",
-                "settings": {
-                    "address": "1.1.1.1",
-                    "network": "tcp,udp",
-                    "port": 53
-                },
+                "settings": {"address": "1.1.1.1", "network": "tcp,udp", "port": 53},
                 "tag": "dns-in"
             }
         ],
@@ -284,92 +262,63 @@ def build_full_config(nodes, config_name):
                 }
             ],
             "rules": [
-                {
-                    "inboundTag": ["dns-in"],
-                    "outboundTag": "dns-out",
-                    "type": "field"
-                },
-                {
-                    "inboundTag": ["dns-remote"],
-                    "balancerTag": "auto-balancer",
-                    "type": "field"
-                },
-                {
-                    "domain": ["full:localhost", "domain:local", "domain:lan", "regexp:^[^.]+$"],
-                    "outboundTag": "direct",
-                    "type": "field"
-                },
-                {
-                    "ip": [
-                        "127.0.0.0/8", "10.0.0.0/8", "172.16.0.0/12",
-                        "192.168.0.0/16", "169.254.0.0/16", "100.64.0.0/10",
-                        "::1/128", "fc00::/7", "fe80::/10"
-                    ],
-                    "outboundTag": "direct",
-                    "type": "field"
-                },
-                {
-                    "balancerTag": "auto-balancer",
-                    "network": "tcp,udp",
-                    "type": "field"
-                }
+                {"inboundTag": ["dns-in"], "outboundTag": "dns-out", "type": "field"},
+                {"inboundTag": ["dns-remote"], "outboundTag": "direct", "type": "field"},
+                {"domain": ["full:localhost", "domain:local", "domain:lan", "regexp:^[^.]+$"], "outboundTag": "direct", "type": "field"},
+                {"ip": ["127.0.0.0/8", "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16", "100.64.0.0/10"], "outboundTag": "direct", "type": "field"},
+                {"balancerTag": "auto-balancer", "network": "tcp,udp", "type": "field"}
             ]
         }
     }
 
 def main():
     links = get_clean_links()
-    parsed_candidates = []
-    hosts_to_resolve = []
+    parsed = []
+    hosts = []
 
     for link in links:
-        node, host = parse_node(link, "node-temp")
+        node, host = parse_node(link, "temp")
         if node and host:
-            parsed_candidates.append((node, host))
-            hosts_to_resolve.append(host)
+            parsed.append((node, host))
+            hosts.append(host)
 
-    # Резолвим IP-адреса хостов
-    print(f"Резолвим {len(hosts_to_resolve)} хостов...")
     host_to_ip = {}
-    for h in set(hosts_to_resolve):
+    for h in set(hosts):
         ip = resolve_ip(h)
         if ip:
             host_to_ip[h] = ip
 
-    # Проверяем страны через GeoIP
     ip_to_country = fetch_countries(list(host_to_ip.values()))
 
     world_nodes = []
     ru_nodes = []
 
-    for node, host in parsed_candidates:
+    for node, host in parsed:
         ip = host_to_ip.get(host)
         country = ip_to_country.get(ip, "UNKNOWN")
 
         if country == "RU":
             if len(ru_nodes) < MAX_NODES_PER_FILE:
-                node_copy = dict(node)
-                node_copy["tag"] = f"node-{len(ru_nodes)+1:03d}"
-                ru_nodes.append(node_copy)
+                n = dict(node)
+                n["tag"] = f"node-{len(ru_nodes)+1:03d}"
+                ru_nodes.append(n)
         else:
             if len(world_nodes) < MAX_NODES_PER_FILE:
-                node_copy = dict(node)
-                node_copy["tag"] = f"node-{len(world_nodes)+1:03d}"
-                world_nodes.append(node_copy)
+                n = dict(node)
+                n["tag"] = f"node-{len(world_nodes)+1:03d}"
+                world_nodes.append(n)
 
-    # 1. Зарубежный конфиг (для YouTube и обхода блокировок)
     if world_nodes:
-        cfg_world = build_full_config(world_nodes, "Зарубежные — Auto Select GLOBAL")
+        cfg = build_full_config(world_nodes, "Зарубежные — Auto Select GLOBAL")
         with open("happ_auto.json", "w", encoding="utf-8") as f:
-            json.dump(cfg_world, f, ensure_ascii=False, indent=2)
-        print(f"Готово: {len(world_nodes)} зарубежных нод сохранены в happ_auto.json")
+            json.dump(cfg, f, ensure_ascii=False, indent=2)
+        print(f"Зарубежные: {len(world_nodes)} нод.")
 
-    # 2. Российский конфиг (для белых списков / глушилок)
     if ru_nodes:
-        cfg_ru = build_full_config(ru_nodes, "Россия — Auto Select WhiteLists")
+        cfg = build_full_config(ru_nodes, "Россия — Auto Select WhiteLists")
         with open("happ_ru.json", "w", encoding="utf-8") as f:
-            json.dump(cfg_ru, f, ensure_ascii=False, indent=2)
-        print(f"Готово: {len(ru_nodes)} российских нод сохранены в happ_ru.json")
+            json.dump(cfg, f, ensure_ascii=False, indent=2)
+        print(f"Россия: {len(ru_nodes)} нод.")
 
 if __name__ == "__main__":
     main()
