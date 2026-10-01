@@ -2,26 +2,34 @@ import base64
 import json
 import re
 import urllib.parse
+import uuid
 import requests
 
 SUBS_FILE = "my_subs.json"
 OUTPUT_FILE = "happ_auto.json"
-MAX_NODES = 120  # Ограничение, чтобы ядро не захлебнулось проверкой пинга
+MAX_NODES = 100
+
+def is_valid_uuid(val):
+    try:
+        uuid.UUID(str(val))
+        return True
+    except (ValueError, AttributeError, TypeError):
+        return False
 
 def get_links():
     with open(SUBS_FILE, "r", encoding="utf-8") as f:
         subs = json.load(f).get("subscriptions", [])
 
     raw_links = []
-    headers = {"User-Agent": "Happ/1.3.0"}
+    headers = {"User-Agent": "Happ/1.3.0 (Windows NT 10.0; Win64; x64)"}
 
     for url in subs:
         try:
             resp = requests.get(url, headers=headers, timeout=15)
             if resp.status_code == 200:
                 text = resp.text.strip()
-                # Если подписка в base64 — декодируем
-                if not text.startswith("vless://") and not text.startswith("hysteria2://") and not text.startswith("hy2://"):
+                # Раскодируем base64, если подписка закодирована целиком
+                if not any(text.startswith(p) for p in ["vless://", "vmess://", "trojan://", "ss://", "hy2://", "hysteria2://"]):
                     try:
                         text = base64.b64decode(text).decode("utf-8", errors="ignore")
                     except Exception:
@@ -29,12 +37,12 @@ def get_links():
                 
                 for line in text.splitlines():
                     line = line.strip()
-                    if line.startswith("vless://") or line.startswith("hysteria2://") or line.startswith("hy2://"):
+                    if line.startswith("vless://"):
                         raw_links.append(line)
         except Exception as e:
             print(f"Ошибка загрузки {url}: {e}")
 
-    # Убираем дубликаты
+    # Удаляем дубликаты
     return list(dict.fromkeys(raw_links))
 
 def parse_vless(url_str, tag):
@@ -43,13 +51,23 @@ def parse_vless(url_str, tag):
         user_id = u.username
         host = u.hostname
         port = int(u.port or 443)
-        params = dict(urllib.parse.parse_qsl(u.query))
 
+        # Отсекаем ссылки с битым UUID (из-за которого падало ядро)
+        if not user_id or not is_valid_uuid(user_id):
+            return None
+
+        if not host:
+            return None
+
+        params = dict(urllib.parse.parse_qsl(u.query))
         net_type = params.get("type", "tcp")
         security = params.get("security", "none")
         flow = params.get("flow", "")
 
-        user_obj = {"id": user_id, "encryption": "none"}
+        user_obj = {
+            "id": user_id,
+            "encryption": "none"
+        }
         if flow:
             user_obj["flow"] = flow
 
@@ -67,19 +85,20 @@ def parse_vless(url_str, tag):
                 "network": "raw" if net_type == "tcp" else net_type,
                 "security": security,
                 "sockopt": {
+                    "dialerProxy": "fragment",
                     "tcpKeepAliveIdle": 300,
                     "tcpKeepAliveInterval": 60
                 }
             }
         }
 
-        # Fragment для обхода ТСПУ/DPI
-        outbound["streamSettings"]["sockopt"]["dialerProxy"] = "fragment"
-
         if security == "reality":
+            pbk = params.get("pbk", "")
+            if not pbk:
+                return None
             outbound["streamSettings"]["realitySettings"] = {
                 "fingerprint": params.get("fp", "chrome"),
-                "publicKey": params.get("pbk", ""),
+                "publicKey": pbk,
                 "serverName": params.get("sni", host),
                 "shortId": params.get("sid", "")
             }
@@ -116,46 +135,9 @@ def parse_vless(url_str, tag):
     except Exception:
         return None
 
-def parse_hy2(url_str, tag):
-    try:
-        u = urllib.parse.urlsplit(url_str)
-        auth = u.username or u.password or ""
-        host = u.hostname
-        port = int(u.port or 443)
-        params = dict(urllib.parse.parse_qsl(u.query))
-
-        return {
-            "protocol": "hysteria",
-            "tag": tag,
-            "settings": {
-                "address": host,
-                "port": port,
-                "version": 2
-            },
-            "streamSettings": {
-                "network": "hysteria",
-                "security": "tls",
-                "hysteriaSettings": {
-                    "auth": auth,
-                    "version": 2
-                },
-                "tlsSettings": {
-                    "alpn": ["h3"],
-                    "serverName": params.get("sni", host)
-                },
-                "sockopt": {
-                    "tcpKeepAliveIdle": 300,
-                    "tcpKeepAliveInterval": 60
-                }
-            }
-        }
-    except Exception:
-        return None
-
 def build_config(outbounds):
     first_node_tag = outbounds[0]["tag"] if outbounds else "direct"
     
-    # Дополнительные системные outbounds
     extra_outbounds = [
         {
             "protocol": "freedom",
@@ -266,27 +248,23 @@ def main():
     links = get_links()
     outbounds = []
     
-    for idx, link in enumerate(links[:MAX_NODES], start=1):
-        tag = f"node-{idx:03d}"
-        if link.startswith("vless://"):
-            parsed = parse_vless(link, tag)
-        elif link.startswith("hysteria2://") or link.startswith("hy2://"):
-            parsed = parse_hy2(link, tag)
-        else:
-            continue
-
+    for link in links:
+        tag = f"node-{len(outbounds)+1:03d}"
+        parsed = parse_vless(link, tag)
         if parsed:
             outbounds.append(parsed)
+        if len(outbounds) >= MAX_NODES:
+            break
 
     if not outbounds:
-        print("Не удалось распарсить ни одного рабочего сервера.")
+        print("Ошибка: не найдено ни одного валидного VLESS сервера.")
         return
 
     full_cfg = build_config(outbounds)
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(full_cfg, f, ensure_ascii=False, indent=2)
 
-    print(f"Готово! Собрано {len(outbounds)} серверов в {OUTPUT_FILE}")
+    print(f"Готово! Собрано {len(outbounds)} валидных серверов.")
 
 if __name__ == "__main__":
     main()
