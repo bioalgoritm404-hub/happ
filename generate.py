@@ -1,13 +1,13 @@
 import base64
 import json
 import re
+import socket
 import urllib.parse
 import uuid
 import requests
 
 SUBS_FILE = "my_subs.json"
-OUTPUT_FILE = "happ_auto.json"
-MAX_NODES = 95
+MAX_NODES_PER_FILE = 60
 
 ALLOWED_NETWORKS = {"tcp", "raw", "grpc", "ws", "websocket", "xhttp", "splithttp"}
 
@@ -49,6 +49,35 @@ def get_clean_links():
 
     return list(dict.fromkeys(raw_links))
 
+def resolve_ip(host):
+    try:
+        socket.inet_aton(host)
+        return host
+    except socket.error:
+        try:
+            return socket.gethostbyname(host)
+        except Exception:
+            return None
+
+def fetch_countries(ips):
+    """Пакетный запрос GeoIP через бесплатный batch API"""
+    ip_to_country = {}
+    unique_ips = list(set(filter(None, ips)))
+    
+    # Режем пачками по 100 штук
+    for i in range(0, len(unique_ips), 100):
+        chunk = unique_ips[i:i+100]
+        payload = [{"query": ip, "fields": "query,countryCode"} for ip in chunk]
+        try:
+            res = requests.post("http://ip-api.com/batch", json=payload, timeout=10)
+            if res.status_code == 200:
+                for item in res.json():
+                    ip_to_country[item.get("query")] = item.get("countryCode", "UNKNOWN")
+        except Exception as e:
+            print(f"Ошибка GeoIP: {e}")
+
+    return ip_to_country
+
 def parse_node(link, tag):
     try:
         u = urllib.parse.urlsplit(link)
@@ -57,13 +86,13 @@ def parse_node(link, tag):
         port = int(u.port or 443)
 
         if not uid or not is_valid_uuid(uid) or not host:
-            return None
+            return None, None
 
         params = dict(urllib.parse.parse_qsl(u.query))
         raw_net = clean(params.get("type", "tcp")).lower()
 
         if raw_net not in ALLOWED_NETWORKS:
-            return None
+            return None, None
 
         if raw_net in ["tcp", "raw"]:
             network = "raw"
@@ -74,7 +103,7 @@ def parse_node(link, tag):
         elif raw_net in ["ws", "websocket"]:
             network = "ws"
         else:
-            return None
+            return None, None
 
         sec = clean(params.get("security", "none")).lower()
         flow = clean(params.get("flow", ""))
@@ -82,7 +111,7 @@ def parse_node(link, tag):
         if sec == "reality":
             pbk = clean(params.get("pbk", ""))
             if not pbk or len(pbk) < 42 or len(pbk) > 45:
-                return None
+                return None, None
 
         user_entry = {"id": uid, "encryption": "none"}
         if flow:
@@ -90,12 +119,7 @@ def parse_node(link, tag):
         elif sec == "reality" and network == "raw":
             user_entry["flow"] = "xtls-rprx-vision"
 
-        sockopt = {
-            "tcpKeepAliveIdle": 300,
-            "tcpKeepAliveInterval": 60
-        }
-
-        # Fragment применяется ТОЛЬКО к raw и ws
+        sockopt = {"tcpKeepAliveIdle": 300, "tcpKeepAliveInterval": 60}
         if network in ["raw", "ws"]:
             sockopt["dialerProxy"] = "fragment"
 
@@ -151,22 +175,20 @@ def parse_node(link, tag):
                 "headers": {"Host": clean(params.get("host", host))}
             }
         elif network == "raw":
-            outbound["streamSettings"]["rawSettings"] = {
-                "header": {"type": "none"}
-            }
+            outbound["streamSettings"]["rawSettings"] = {"header": {"type": "none"}}
 
-        return outbound
+        return outbound, host
     except Exception:
-        return None
+        return None, None
 
-def build_full_config(nodes):
+def build_full_config(nodes, config_name):
     first_node = nodes[0]["tag"]
 
     return {
         "_meta": {
             "client": "Happ",
             "generator": "Clean Balancer Generator",
-            "name": "Auto-Select Balancer"
+            "name": config_name
         },
         "dns": {
             "disableCache": False,
@@ -296,26 +318,58 @@ def build_full_config(nodes):
     }
 
 def main():
-    raw_links = get_clean_links()
-    valid_nodes = []
+    links = get_clean_links()
+    parsed_candidates = []
+    hosts_to_resolve = []
 
-    for link in raw_links:
-        tag = f"node-{len(valid_nodes)+1:03d}"
-        node = parse_node(link, tag)
-        if node:
-            valid_nodes.append(node)
-        if len(valid_nodes) >= MAX_NODES:
-            break
+    for link in links:
+        node, host = parse_node(link, "node-temp")
+        if node and host:
+            parsed_candidates.append((node, host))
+            hosts_to_resolve.append(host)
 
-    if not valid_nodes:
-        print("Не найдено подходящих нод.")
-        return
+    # Резолвим IP-адреса хостов
+    print(f"Резолвим {len(hosts_to_resolve)} хостов...")
+    host_to_ip = {}
+    for h in set(hosts_to_resolve):
+        ip = resolve_ip(h)
+        if ip:
+            host_to_ip[h] = ip
 
-    config = build_full_config(valid_nodes)
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump(config, f, ensure_ascii=False, indent=2)
+    # Проверяем страны через GeoIP
+    ip_to_country = fetch_countries(list(host_to_ip.values()))
 
-    print(f"Готово! Собрано {len(valid_nodes)} чистых серверов.")
+    world_nodes = []
+    ru_nodes = []
+
+    for node, host in parsed_candidates:
+        ip = host_to_ip.get(host)
+        country = ip_to_country.get(ip, "UNKNOWN")
+
+        if country == "RU":
+            if len(ru_nodes) < MAX_NODES_PER_FILE:
+                node_copy = dict(node)
+                node_copy["tag"] = f"node-{len(ru_nodes)+1:03d}"
+                ru_nodes.append(node_copy)
+        else:
+            if len(world_nodes) < MAX_NODES_PER_FILE:
+                node_copy = dict(node)
+                node_copy["tag"] = f"node-{len(world_nodes)+1:03d}"
+                world_nodes.append(node_copy)
+
+    # 1. Зарубежный конфиг (для YouTube и обхода блокировок)
+    if world_nodes:
+        cfg_world = build_full_config(world_nodes, "Зарубежные — Auto Select GLOBAL")
+        with open("happ_auto.json", "w", encoding="utf-8") as f:
+            json.dump(cfg_world, f, ensure_ascii=False, indent=2)
+        print(f"Готово: {len(world_nodes)} зарубежных нод сохранены в happ_auto.json")
+
+    # 2. Российский конфиг (для белых списков / глушилок)
+    if ru_nodes:
+        cfg_ru = build_full_config(ru_nodes, "Россия — Auto Select WhiteLists")
+        with open("happ_ru.json", "w", encoding="utf-8") as f:
+            json.dump(cfg_ru, f, ensure_ascii=False, indent=2)
+        print(f"Готово: {len(ru_nodes)} российских нод сохранены в happ_ru.json")
 
 if __name__ == "__main__":
     main()
