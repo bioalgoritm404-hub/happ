@@ -1,0 +1,9 @@
+{
+  "subscriptions": [
+    "https://solovyov-jenya2004.vercel.app/final_sorted/",
+    "https://raw.githubusercontent.com/wlunlocker/vpn-configs/main/whitelist_all.txt",
+    "https://github.com/nikita29a/FreeProxyList/raw/refs/heads/main/mirror/1.txt",
+    "https://raw.githubusercontent.com/kort0881/vpn-vless-configs-russia/main/githubmirror/clean/vless.txt",
+    "https://raw.githubusercontent.com/zieng2/wl/main/vless_universal.txt"
+  ]
+}
