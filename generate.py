@@ -9,6 +9,9 @@ SUBS_FILE = "my_subs.json"
 OUTPUT_FILE = "happ_auto.json"
 MAX_NODES = 100
 
+# Разрешаем ТОЛЬКО проверенные и актуальные для Xray 26+ транспорты
+ALLOWED_NETWORKS = {"tcp", "raw", "grpc", "ws", "websocket", "xhttp", "splithttp"}
+
 def is_valid_uuid(val):
     try:
         uuid.UUID(str(val))
@@ -17,10 +20,9 @@ def is_valid_uuid(val):
         return False
 
 def clean_str(s):
-    """Убирает пробелы, переносы строк и спецсимволы, ломающие base64"""
     if not s:
         return ""
-    return re.sub(r"\s+", "", s)
+    return re.sub(r"\s+", "", str(s))
 
 def get_links():
     with open(SUBS_FILE, "r", encoding="utf-8") as f:
@@ -42,7 +44,6 @@ def get_links():
                 
                 for line in text.splitlines():
                     line = line.strip()
-                    # Берем ТОЛЬКО чистый VLESS (Hysteria отсекаем, так как Xray её не поддерживает)
                     if line.startswith("vless://"):
                         raw_links.append(line)
         except Exception as e:
@@ -54,22 +55,38 @@ def parse_vless(url_str, tag):
     try:
         u = urllib.parse.urlsplit(url_str)
         user_id = clean_str(u.username)
-        host = u.hostname
+        host = clean_str(u.hostname)
         port = int(u.port or 443)
 
         if not user_id or not is_valid_uuid(user_id) or not host:
             return None
 
         params = dict(urllib.parse.parse_qsl(u.query))
-        net_type = params.get("type", "tcp")
-        security = params.get("security", "none")
+        raw_net = clean_str(params.get("type", "tcp")).lower()
+
+        # Блокируем древний HTTP transport (H2), quic и kcp
+        if raw_net not in ALLOWED_NETWORKS:
+            return None
+
+        # Нормализация названий транспортов для Xray
+        if raw_net in ["tcp", "raw"]:
+            net_type = "raw"
+        elif raw_net in ["ws", "websocket"]:
+            net_type = "ws"
+        elif raw_net in ["xhttp", "splithttp"]:
+            net_type = "xhttp"
+        elif raw_net == "grpc":
+            net_type = "grpc"
+        else:
+            return None
+
+        security = clean_str(params.get("security", "none"))
         flow = clean_str(params.get("flow", ""))
 
         user_obj = {"id": user_id, "encryption": "none"}
         if flow:
             user_obj["flow"] = flow
-        elif security == "reality" and net_type in ["tcp", "raw"]:
-            # Для TCP Reality в Xray обязательно нужен flow vision
+        elif security == "reality" and net_type == "raw":
             user_obj["flow"] = "xtls-rprx-vision"
 
         outbound = {
@@ -83,7 +100,7 @@ def parse_vless(url_str, tag):
                 }]
             },
             "streamSettings": {
-                "network": "raw" if net_type == "tcp" else net_type,
+                "network": net_type,
                 "security": security,
                 "sockopt": {
                     "dialerProxy": "fragment",
@@ -95,7 +112,6 @@ def parse_vless(url_str, tag):
 
         if security == "reality":
             pbk = clean_str(params.get("pbk", ""))
-            # Валидный X25519 публичный ключ должен быть ровно 43 или 44 символа
             if not pbk or len(pbk) < 42 or len(pbk) > 45:
                 return None
 
@@ -106,10 +122,13 @@ def parse_vless(url_str, tag):
                 "shortId": clean_str(params.get("sid", ""))
             }
         elif security == "tls":
-            outbound["streamSettings"]["tlsSettings"] = {
+            tls = {
                 "fingerprint": clean_str(params.get("fp", "chrome")),
                 "serverName": clean_str(params.get("sni", host))
             }
+            if params.get("alpn"):
+                tls["alpn"] = [clean_str(x) for x in params.get("alpn").split(",") if clean_str(x)]
+            outbound["streamSettings"]["tlsSettings"] = tls
 
         if net_type == "grpc":
             outbound["streamSettings"]["grpcSettings"] = {
@@ -117,16 +136,22 @@ def parse_vless(url_str, tag):
                 "serviceName": clean_str(params.get("serviceName", ""))
             }
         elif net_type == "ws":
+            ws_path = params.get("path", "/")
+            if not ws_path.startswith("/"):
+                ws_path = "/" + ws_path
             outbound["streamSettings"]["wsSettings"] = {
-                "path": params.get("path", "/"),
+                "path": ws_path,
                 "headers": {"Host": clean_str(params.get("host", host))}
             }
         elif net_type == "xhttp":
+            x_path = params.get("path", "/")
+            if not x_path.startswith("/"):
+                x_path = "/" + x_path
             outbound["streamSettings"]["xhttpSettings"] = {
                 "mode": clean_str(params.get("mode", "auto")),
-                "path": params.get("path", "/")
+                "path": x_path
             }
-        elif net_type in ["tcp", "raw"]:
+        elif net_type == "raw":
             outbound["streamSettings"]["rawSettings"] = {
                 "header": {"type": "none"}
             }
@@ -255,14 +280,14 @@ def main():
             break
 
     if not outbounds:
-        print("Не найдено рабочих VLESS нод.")
+        print("Не найдено серверов, совместимых с Xray 26.")
         return
 
     full_cfg = build_config(outbounds)
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(full_cfg, f, ensure_ascii=False, indent=2)
 
-    print(f"Готово! Собрано {len(outbounds)} чистых VLESS серверов.")
+    print(f"Готово! Собрано {len(outbounds)} совместимых нод.")
 
 if __name__ == "__main__":
     main()
