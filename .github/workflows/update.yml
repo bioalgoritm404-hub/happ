@@ -1,8 +1,8 @@
-name: Update Happ Subscription
+name: Update Happ Subscriptions
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Каждый час
+    - cron: '0 * * * *'  # Автообновление каждый час
   workflow_dispatch:      # Кнопка ручного запуска в Actions
 
 jobs:
@@ -30,5 +30,5 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add happ_auto.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update nodes" && git push)
+          git add *.json
+          git diff --staged --quiet || (git commit -m "Auto-update world and ru nodes" && git push)
