@@ -7,7 +7,9 @@ import requests
 
 SUBS_FILE = "my_subs.json"
 OUTPUT_FILE = "happ_auto.json"
-MAX_NODES = 90
+MAX_NODES = 95
+
+ALLOWED_NETWORKS = {"tcp", "raw", "grpc", "ws", "websocket", "xhttp", "splithttp"}
 
 def is_valid_uuid(val):
     try:
@@ -30,10 +32,10 @@ def get_clean_links():
 
     for url in subs:
         try:
-            r = requests.get(url, headers=headers, timeout=10)
+            r = requests.get(url, headers=headers, timeout=12)
             if r.status_code == 200:
                 content = r.text.strip()
-                if not content.startswith("vless://"):
+                if not any(content.startswith(p) for p in ["vless://", "vmess://"]):
                     try:
                         content = base64.b64decode(content).decode("utf-8", errors="ignore")
                     except Exception:
@@ -42,8 +44,8 @@ def get_clean_links():
                     line = line.strip()
                     if line.startswith("vless://"):
                         raw_links.append(line)
-        except Exception:
-            pass
+        except Exception as e:
+            print(f"Пропуск {url}: {e}")
 
     return list(dict.fromkeys(raw_links))
 
@@ -54,31 +56,31 @@ def parse_node(link, tag):
         host = clean(u.hostname)
         port = int(u.port or 443)
 
-        # Отсекаем невалидные UUID и пустые хосты
         if not uid or not is_valid_uuid(uid) or not host:
             return None
 
         params = dict(urllib.parse.parse_qsl(u.query))
-        net = clean(params.get("type", "tcp")).lower()
+        raw_net = clean(params.get("type", "tcp")).lower()
+
+        if raw_net not in ALLOWED_NETWORKS:
+            return None
+
+        if raw_net in ["tcp", "raw"]:
+            network = "raw"
+        elif raw_net == "grpc":
+            network = "grpc"
+        elif raw_net in ["xhttp", "splithttp"]:
+            network = "xhttp"
+        elif raw_net in ["ws", "websocket"]:
+            network = "ws"
+        else:
+            return None
+
         sec = clean(params.get("security", "none")).lower()
         flow = clean(params.get("flow", ""))
 
-        # ЖЕСТКИЙ ФИЛЬТР: Никакого старого http/h2, quic или kcp!
-        if net in ["tcp", "raw"]:
-            network = "raw"
-        elif net == "grpc":
-            network = "grpc"
-        elif net in ["xhttp", "splithttp"]:
-            network = "xhttp"
-        elif net in ["ws", "websocket"]:
-            network = "ws"
-        else:
-            return None  # Любой старый транспорт сразу бракуется
-
-        # Проверка Reality ключа
         if sec == "reality":
             pbk = clean(params.get("pbk", ""))
-            # Валидный X25519 ключ строго от 42 до 44 символов без пробелов
             if not pbk or len(pbk) < 42 or len(pbk) > 45:
                 return None
 
@@ -87,6 +89,15 @@ def parse_node(link, tag):
             user_entry["flow"] = flow
         elif sec == "reality" and network == "raw":
             user_entry["flow"] = "xtls-rprx-vision"
+
+        sockopt = {
+            "tcpKeepAliveIdle": 300,
+            "tcpKeepAliveInterval": 60
+        }
+
+        # Fragment применяется ТОЛЬКО к raw и ws
+        if network in ["raw", "ws"]:
+            sockopt["dialerProxy"] = "fragment"
 
         outbound = {
             "protocol": "vless",
@@ -101,16 +112,9 @@ def parse_node(link, tag):
             "streamSettings": {
                 "network": network,
                 "security": sec,
-                "sockopt": {
-                    "tcpKeepAliveIdle": 300,
-                    "tcpKeepAliveInterval": 60
-                }
+                "sockopt": sockopt
             }
         }
-
-        # Fragment подключаем только для TCP и WS (для gRPC и xhttp он ломает стрим)
-        if network in ["raw", "ws"]:
-            outbound["streamSettings"]["sockopt"]["dialerProxy"] = "fragment"
 
         if sec == "reality":
             outbound["streamSettings"]["realitySettings"] = {
@@ -124,6 +128,10 @@ def parse_node(link, tag):
                 "fingerprint": clean(params.get("fp", "chrome")),
                 "serverName": clean(params.get("sni", host))
             }
+            if params.get("alpn"):
+                outbound["streamSettings"]["tlsSettings"]["alpn"] = [
+                    clean(x) for x in params.get("alpn").split(",") if clean(x)
+                ]
 
         if network == "grpc":
             outbound["streamSettings"]["grpcSettings"] = {
@@ -161,10 +169,28 @@ def build_full_config(nodes):
             "name": "Auto-Select Balancer"
         },
         "dns": {
+            "disableCache": False,
             "queryStrategy": "UseIPv4",
+            "serveStale": True,
+            "hosts": {
+                "cloudflare-dns.com": ["1.1.1.1", "1.0.0.1"],
+                "dns.google": ["8.8.8.8", "8.8.4.4"],
+                "localhost": "127.0.0.1"
+            },
             "servers": [
-                "https+local://common.dot.dns.yandex.net/dns-query",
-                "tcp+local://77.88.8.8:53",
+                {
+                    "address": "tcp+local://77.88.8.8:53",
+                    "domains": [
+                        "full:dns.google",
+                        "full:cloudflare-dns.com",
+                        "full:localhost",
+                        "domain:local",
+                        "domain:lan"
+                    ],
+                    "queryStrategy": "UseIPv4",
+                    "skipFallback": True,
+                    "timeoutMs": 4000
+                },
                 "https://dns.google/dns-query",
                 "https://cloudflare-dns.com/dns-query"
             ],
@@ -186,6 +212,17 @@ def build_full_config(nodes):
                 "settings": {},
                 "sniffing": {"destOverride": ["http", "tls", "quic"], "enabled": True},
                 "tag": "http-in"
+            },
+            {
+                "listen": "127.0.0.1",
+                "port": 10853,
+                "protocol": "dokodemo-door",
+                "settings": {
+                    "address": "1.1.1.1",
+                    "network": "tcp,udp",
+                    "port": 53
+                },
+                "tag": "dns-in"
             }
         ],
         "log": {"loglevel": "warning"},
@@ -226,6 +263,11 @@ def build_full_config(nodes):
             ],
             "rules": [
                 {
+                    "inboundTag": ["dns-in"],
+                    "outboundTag": "dns-out",
+                    "type": "field"
+                },
+                {
                     "inboundTag": ["dns-remote"],
                     "balancerTag": "auto-balancer",
                     "type": "field"
@@ -236,7 +278,11 @@ def build_full_config(nodes):
                     "type": "field"
                 },
                 {
-                    "ip": ["127.0.0.0/8", "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16", "100.64.0.0/10"],
+                    "ip": [
+                        "127.0.0.0/8", "10.0.0.0/8", "172.16.0.0/12",
+                        "192.168.0.0/16", "169.254.0.0/16", "100.64.0.0/10",
+                        "::1/128", "fc00::/7", "fe80::/10"
+                    ],
                     "outboundTag": "direct",
                     "type": "field"
                 },
@@ -269,7 +315,7 @@ def main():
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(config, f, ensure_ascii=False, indent=2)
 
-    print(f"Готово: отобрано {len(valid_nodes)} валидных серверов.")
+    print(f"Готово! Собрано {len(valid_nodes)} чистых серверов.")
 
 if __name__ == "__main__":
     main()
