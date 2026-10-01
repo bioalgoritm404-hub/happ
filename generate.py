@@ -13,23 +13,28 @@ def is_valid_uuid(val):
     try:
         uuid.UUID(str(val))
         return True
-    except (ValueError, AttributeError, TypeError):
+    except Exception:
         return False
+
+def clean_str(s):
+    """Убирает пробелы, переносы строк и спецсимволы, ломающие base64"""
+    if not s:
+        return ""
+    return re.sub(r"\s+", "", s)
 
 def get_links():
     with open(SUBS_FILE, "r", encoding="utf-8") as f:
         subs = json.load(f).get("subscriptions", [])
 
     raw_links = []
-    headers = {"User-Agent": "Happ/1.3.0 (Windows NT 10.0; Win64; x64)"}
+    headers = {"User-Agent": "Happ/1.3.0"}
 
     for url in subs:
         try:
-            resp = requests.get(url, headers=headers, timeout=15)
+            resp = requests.get(url, headers=headers, timeout=12)
             if resp.status_code == 200:
                 text = resp.text.strip()
-                # Раскодируем base64, если подписка закодирована целиком
-                if not any(text.startswith(p) for p in ["vless://", "vmess://", "trojan://", "ss://", "hy2://", "hysteria2://"]):
+                if not any(text.startswith(p) for p in ["vless://", "vmess://"]):
                     try:
                         text = base64.b64decode(text).decode("utf-8", errors="ignore")
                     except Exception:
@@ -37,39 +42,35 @@ def get_links():
                 
                 for line in text.splitlines():
                     line = line.strip()
+                    # Берем ТОЛЬКО чистый VLESS (Hysteria отсекаем, так как Xray её не поддерживает)
                     if line.startswith("vless://"):
                         raw_links.append(line)
         except Exception as e:
             print(f"Ошибка загрузки {url}: {e}")
 
-    # Удаляем дубликаты
     return list(dict.fromkeys(raw_links))
 
 def parse_vless(url_str, tag):
     try:
         u = urllib.parse.urlsplit(url_str)
-        user_id = u.username
+        user_id = clean_str(u.username)
         host = u.hostname
         port = int(u.port or 443)
 
-        # Отсекаем ссылки с битым UUID (из-за которого падало ядро)
-        if not user_id or not is_valid_uuid(user_id):
-            return None
-
-        if not host:
+        if not user_id or not is_valid_uuid(user_id) or not host:
             return None
 
         params = dict(urllib.parse.parse_qsl(u.query))
         net_type = params.get("type", "tcp")
         security = params.get("security", "none")
-        flow = params.get("flow", "")
+        flow = clean_str(params.get("flow", ""))
 
-        user_obj = {
-            "id": user_id,
-            "encryption": "none"
-        }
+        user_obj = {"id": user_id, "encryption": "none"}
         if flow:
             user_obj["flow"] = flow
+        elif security == "reality" and net_type in ["tcp", "raw"]:
+            # Для TCP Reality в Xray обязательно нужен flow vision
+            user_obj["flow"] = "xtls-rprx-vision"
 
         outbound = {
             "protocol": "vless",
@@ -93,42 +94,41 @@ def parse_vless(url_str, tag):
         }
 
         if security == "reality":
-            pbk = params.get("pbk", "")
-            if not pbk:
+            pbk = clean_str(params.get("pbk", ""))
+            # Валидный X25519 публичный ключ должен быть ровно 43 или 44 символа
+            if not pbk or len(pbk) < 42 or len(pbk) > 45:
                 return None
+
             outbound["streamSettings"]["realitySettings"] = {
-                "fingerprint": params.get("fp", "chrome"),
+                "fingerprint": clean_str(params.get("fp", "chrome")),
                 "publicKey": pbk,
-                "serverName": params.get("sni", host),
-                "shortId": params.get("sid", "")
+                "serverName": clean_str(params.get("sni", host)),
+                "shortId": clean_str(params.get("sid", ""))
             }
         elif security == "tls":
-            tls = {
-                "fingerprint": params.get("fp", "chrome"),
-                "serverName": params.get("sni", host)
+            outbound["streamSettings"]["tlsSettings"] = {
+                "fingerprint": clean_str(params.get("fp", "chrome")),
+                "serverName": clean_str(params.get("sni", host))
             }
-            if params.get("alpn"):
-                tls["alpn"] = params.get("alpn").split(",")
-            outbound["streamSettings"]["tlsSettings"] = tls
 
         if net_type == "grpc":
             outbound["streamSettings"]["grpcSettings"] = {
                 "multiMode": False,
-                "serviceName": params.get("serviceName", "")
+                "serviceName": clean_str(params.get("serviceName", ""))
             }
         elif net_type == "ws":
             outbound["streamSettings"]["wsSettings"] = {
                 "path": params.get("path", "/"),
-                "headers": {"Host": params.get("host", params.get("sni", host))}
+                "headers": {"Host": clean_str(params.get("host", host))}
             }
         elif net_type == "xhttp":
             outbound["streamSettings"]["xhttpSettings"] = {
-                "mode": params.get("mode", "auto"),
+                "mode": clean_str(params.get("mode", "auto")),
                 "path": params.get("path", "/")
             }
-        elif net_type == "tcp":
+        elif net_type in ["tcp", "raw"]:
             outbound["streamSettings"]["rawSettings"] = {
-                "header": {"type": params.get("headerType", "none")}
+                "header": {"type": "none"}
             }
 
         return outbound
@@ -136,9 +136,9 @@ def parse_vless(url_str, tag):
         return None
 
 def build_config(outbounds):
-    first_node_tag = outbounds[0]["tag"] if outbounds else "direct"
+    first_node = outbounds[0]["tag"] if outbounds else "direct"
     
-    extra_outbounds = [
+    extra = [
         {
             "protocol": "freedom",
             "tag": "fragment",
@@ -149,9 +149,7 @@ def build_config(outbounds):
                     "maxSplit": "10",
                     "packets": "1-3"
                 },
-                "noises": [
-                    {"delay": "10-50", "packet": "50-150", "type": "rand"}
-                ]
+                "noises": [{"delay": "10-50", "packet": "50-150", "type": "rand"}]
             }
         },
         {"protocol": "freedom", "tag": "direct", "settings": {"domainStrategy": "UseIPv4"}},
@@ -162,7 +160,7 @@ def build_config(outbounds):
     return {
         "_meta": {
             "client": "Happ",
-            "generator": "Custom Balancer Generator",
+            "generator": "Clean Balancer Generator",
             "name": "Auto-Select Balancer"
         },
         "dns": {
@@ -199,13 +197,13 @@ def build_config(outbounds):
             "probeURL": "https://www.gstatic.com/generate_204",
             "subjectSelector": ["node-"]
         },
-        "outbounds": outbounds + extra_outbounds,
+        "outbounds": outbounds + extra,
         "routing": {
             "domainMatcher": "hybrid",
             "domainStrategy": "IPIfNonMatch",
             "balancers": [
                 {
-                    "fallbackTag": first_node_tag,
+                    "fallbackTag": first_node,
                     "selector": ["node-"],
                     "strategy": {"type": "leastPing"},
                     "tag": "auto-balancer"
@@ -257,14 +255,14 @@ def main():
             break
 
     if not outbounds:
-        print("Ошибка: не найдено ни одного валидного VLESS сервера.")
+        print("Не найдено рабочих VLESS нод.")
         return
 
     full_cfg = build_config(outbounds)
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(full_cfg, f, ensure_ascii=False, indent=2)
 
-    print(f"Готово! Собрано {len(outbounds)} валидных серверов.")
+    print(f"Готово! Собрано {len(outbounds)} чистых VLESS серверов.")
 
 if __name__ == "__main__":
     main()
