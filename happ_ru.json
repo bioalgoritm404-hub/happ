@@ -283,6 +283,123 @@
       "settings": {
         "vnext": [
           {
+            "address": "ru1d.confstage.com",
+            "port": 443,
+            "users": [
+              {
+                "id": "2dd70fd2-8be4-48dd-aec5-838a7a9e03dd",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "eh.vk.com",
+          "shortId": "6ba85179e30d4fc2"
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-007",
+      "settings": {
+        "vnext": [
+          {
+            "address": "ru1d.confstage.com",
+            "port": 443,
+            "users": [
+              {
+                "id": "2dd70fd2-8be4-48dd-aec5-838a7a9e03dd",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "realitySettings": {
+          "fingerprint": "qq",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "eh.vk.com",
+          "shortId": "6ba85179e30d4fc2"
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-008",
+      "settings": {
+        "vnext": [
+          {
+            "address": "ru1d.confstage.com",
+            "port": 443,
+            "users": [
+              {
+                "id": "2dd70fd2-8be4-48dd-aec5-838a7a9e03dd",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "realitySettings": {
+          "fingerprint": "safari",
+          "publicKey": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc",
+          "serverName": "eh.vk.com",
+          "shortId": "6ba85179e30d4fc2"
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-009",
+      "settings": {
+        "vnext": [
+          {
             "address": "213.219.215.243",
             "port": 8443,
             "users": [
@@ -308,123 +425,6 @@
           "publicKey": "9Y-_jCI3Z1x6SXK2tHdZ6V1CN9IJPNPnoxSW0cbXxD8",
           "serverName": "sni.pl-dp-01.online",
           "shortId": "50e09046c0c00159"
-        },
-        "rawSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-007",
-      "settings": {
-        "vnext": [
-          {
-            "address": "90.156.218.163",
-            "port": 443,
-            "users": [
-              {
-                "id": "adc11f30-e4cb-4985-bf5e-f9ded69c019f",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "raw",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
-        },
-        "realitySettings": {
-          "fingerprint": "firefox",
-          "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
-          "serverName": "eh.vk.ru",
-          "shortId": "db04ce8bdb8900f1"
-        },
-        "rawSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-008",
-      "settings": {
-        "vnext": [
-          {
-            "address": "90.156.218.163",
-            "port": 443,
-            "users": [
-              {
-                "id": "adc11f30-e4cb-4985-bf5e-f9ded69c019f",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "raw",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
-        },
-        "realitySettings": {
-          "fingerprint": "random",
-          "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
-          "serverName": "eh.vk.ru",
-          "shortId": "db04ce8bdb8900f1"
-        },
-        "rawSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-009",
-      "settings": {
-        "vnext": [
-          {
-            "address": "90.156.218.163",
-            "port": 443,
-            "users": [
-              {
-                "id": "adc11f30-e4cb-4985-bf5e-f9ded69c019f",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "raw",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
-        },
-        "realitySettings": {
-          "fingerprint": "android",
-          "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
-          "serverName": "eh.vk.ru",
-          "shortId": "db04ce8bdb8900f1"
         },
         "rawSettings": {
           "header": {
@@ -499,7 +499,7 @@
           "dialerProxy": "fragment"
         },
         "realitySettings": {
-          "fingerprint": "chrome",
+          "fingerprint": "ios",
           "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
           "serverName": "eh.vk.ru",
           "shortId": "db04ce8bdb8900f1"
@@ -538,7 +538,7 @@
           "dialerProxy": "fragment"
         },
         "realitySettings": {
-          "fingerprint": "edge",
+          "fingerprint": "qq",
           "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
           "serverName": "eh.vk.ru",
           "shortId": "db04ce8bdb8900f1"
@@ -577,7 +577,7 @@
           "dialerProxy": "fragment"
         },
         "realitySettings": {
-          "fingerprint": "firefox",
+          "fingerprint": "safari",
           "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
           "serverName": "eh.vk.ru",
           "shortId": "db04ce8bdb8900f1"
@@ -616,7 +616,7 @@
           "dialerProxy": "fragment"
         },
         "realitySettings": {
-          "fingerprint": "ios",
+          "fingerprint": "chrome",
           "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
           "serverName": "eh.vk.ru",
           "shortId": "db04ce8bdb8900f1"
@@ -655,7 +655,7 @@
           "dialerProxy": "fragment"
         },
         "realitySettings": {
-          "fingerprint": "safari",
+          "fingerprint": "edge",
           "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
           "serverName": "eh.vk.ru",
           "shortId": "db04ce8bdb8900f1"
@@ -694,7 +694,7 @@
           "dialerProxy": "fragment"
         },
         "realitySettings": {
-          "fingerprint": "chrome",
+          "fingerprint": "firefox",
           "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
           "serverName": "eh.vk.ru",
           "shortId": "db04ce8bdb8900f1"
@@ -733,7 +733,7 @@
           "dialerProxy": "fragment"
         },
         "realitySettings": {
-          "fingerprint": "edge",
+          "fingerprint": "safari",
           "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
           "serverName": "eh.vk.ru",
           "shortId": "db04ce8bdb8900f1"
@@ -772,7 +772,7 @@
           "dialerProxy": "fragment"
         },
         "realitySettings": {
-          "fingerprint": "safari",
+          "fingerprint": "chrome",
           "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
           "serverName": "eh.vk.ru",
           "shortId": "db04ce8bdb8900f1"
@@ -790,89 +790,11 @@
       "settings": {
         "vnext": [
           {
-            "address": "176.57.218.235",
+            "address": "90.156.218.163",
             "port": 443,
             "users": [
               {
-                "id": "65616081-1772-49d7-a793-42bc13d22f69",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "raw",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
-        },
-        "realitySettings": {
-          "fingerprint": "android",
-          "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
-          "serverName": "ru-1-8.imnotgay.party",
-          "shortId": ""
-        },
-        "rawSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-020",
-      "settings": {
-        "vnext": [
-          {
-            "address": "176.57.218.235",
-            "port": 443,
-            "users": [
-              {
-                "id": "65616081-1772-49d7-a793-42bc13d22f69",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "raw",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
-        },
-        "realitySettings": {
-          "fingerprint": "chrome",
-          "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
-          "serverName": "ru-1-8.imnotgay.party",
-          "shortId": ""
-        },
-        "rawSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-021",
-      "settings": {
-        "vnext": [
-          {
-            "address": "176.57.218.235",
-            "port": 443,
-            "users": [
-              {
-                "id": "65616081-1772-49d7-a793-42bc13d22f69",
+                "id": "adc11f30-e4cb-4985-bf5e-f9ded69c019f",
                 "encryption": "none",
                 "flow": "xtls-rprx-vision"
               }
@@ -890,9 +812,9 @@
         },
         "realitySettings": {
           "fingerprint": "firefox",
-          "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
-          "serverName": "ru-1-8.imnotgay.party",
-          "shortId": ""
+          "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
+          "serverName": "eh.vk.ru",
+          "shortId": "db04ce8bdb8900f1"
         },
         "rawSettings": {
           "header": {
@@ -903,15 +825,15 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-022",
+      "tag": "node-020",
       "settings": {
         "vnext": [
           {
-            "address": "176.57.218.235",
+            "address": "90.156.218.163",
             "port": 443,
             "users": [
               {
-                "id": "65616081-1772-49d7-a793-42bc13d22f69",
+                "id": "adc11f30-e4cb-4985-bf5e-f9ded69c019f",
                 "encryption": "none",
                 "flow": "xtls-rprx-vision"
               }
@@ -929,9 +851,9 @@
         },
         "realitySettings": {
           "fingerprint": "ios",
-          "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
-          "serverName": "ru-1-8.imnotgay.party",
-          "shortId": ""
+          "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
+          "serverName": "eh.vk.ru",
+          "shortId": "db04ce8bdb8900f1"
         },
         "rawSettings": {
           "header": {
@@ -942,15 +864,15 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-023",
+      "tag": "node-021",
       "settings": {
         "vnext": [
           {
-            "address": "176.57.218.235",
+            "address": "90.156.218.163",
             "port": 443,
             "users": [
               {
-                "id": "65616081-1772-49d7-a793-42bc13d22f69",
+                "id": "adc11f30-e4cb-4985-bf5e-f9ded69c019f",
                 "encryption": "none",
                 "flow": "xtls-rprx-vision"
               }
@@ -968,9 +890,9 @@
         },
         "realitySettings": {
           "fingerprint": "qq",
-          "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
-          "serverName": "ru-1-8.imnotgay.party",
-          "shortId": ""
+          "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
+          "serverName": "eh.vk.ru",
+          "shortId": "db04ce8bdb8900f1"
         },
         "rawSettings": {
           "header": {
@@ -981,15 +903,15 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-024",
+      "tag": "node-022",
       "settings": {
         "vnext": [
           {
-            "address": "185.104.114.92",
+            "address": "90.156.218.163",
             "port": 443,
             "users": [
               {
-                "id": "65616081-1772-49d7-a793-42bc13d22f69",
+                "id": "adc11f30-e4cb-4985-bf5e-f9ded69c019f",
                 "encryption": "none",
                 "flow": "xtls-rprx-vision"
               }
@@ -1006,10 +928,10 @@
           "dialerProxy": "fragment"
         },
         "realitySettings": {
-          "fingerprint": "android",
-          "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
-          "serverName": "ru-1-5.imnotgay.party",
-          "shortId": ""
+          "fingerprint": "random",
+          "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
+          "serverName": "eh.vk.ru",
+          "shortId": "db04ce8bdb8900f1"
         },
         "rawSettings": {
           "header": {
@@ -1020,15 +942,54 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-025",
+      "tag": "node-023",
       "settings": {
         "vnext": [
           {
-            "address": "185.104.114.92",
+            "address": "90.156.218.163",
             "port": 443,
             "users": [
               {
-                "id": "65616081-1772-49d7-a793-42bc13d22f69",
+                "id": "adc11f30-e4cb-4985-bf5e-f9ded69c019f",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "realitySettings": {
+          "fingerprint": "safari",
+          "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
+          "serverName": "eh.vk.ru",
+          "shortId": "db04ce8bdb8900f1"
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-024",
+      "settings": {
+        "vnext": [
+          {
+            "address": "90.156.218.163",
+            "port": 443,
+            "users": [
+              {
+                "id": "adc11f30-e4cb-4985-bf5e-f9ded69c019f",
                 "encryption": "none",
                 "flow": "xtls-rprx-vision"
               }
@@ -1046,9 +1007,48 @@
         },
         "realitySettings": {
           "fingerprint": "chrome",
-          "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
-          "serverName": "ru-1-5.imnotgay.party",
-          "shortId": ""
+          "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
+          "serverName": "eh.vk.ru",
+          "shortId": "db04ce8bdb8900f1"
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-025",
+      "settings": {
+        "vnext": [
+          {
+            "address": "90.156.218.163",
+            "port": 443,
+            "users": [
+              {
+                "id": "adc11f30-e4cb-4985-bf5e-f9ded69c019f",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "realitySettings": {
+          "fingerprint": "edge",
+          "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
+          "serverName": "eh.vk.ru",
+          "shortId": "db04ce8bdb8900f1"
         },
         "rawSettings": {
           "header": {
@@ -1063,7 +1063,46 @@
       "settings": {
         "vnext": [
           {
-            "address": "185.104.114.92",
+            "address": "90.156.218.163",
+            "port": 443,
+            "users": [
+              {
+                "id": "adc11f30-e4cb-4985-bf5e-f9ded69c019f",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "realitySettings": {
+          "fingerprint": "ios",
+          "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
+          "serverName": "eh.vk.ru",
+          "shortId": "db04ce8bdb8900f1"
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-027",
+      "settings": {
+        "vnext": [
+          {
+            "address": "109.68.214.220",
             "port": 443,
             "users": [
               {
@@ -1086,46 +1125,7 @@
         "realitySettings": {
           "fingerprint": "edge",
           "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
-          "serverName": "ru-1-5.imnotgay.party",
-          "shortId": ""
-        },
-        "rawSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-027",
-      "settings": {
-        "vnext": [
-          {
-            "address": "185.104.114.92",
-            "port": 443,
-            "users": [
-              {
-                "id": "65616081-1772-49d7-a793-42bc13d22f69",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "raw",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
-        },
-        "realitySettings": {
-          "fingerprint": "firefox",
-          "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
-          "serverName": "ru-1-5.imnotgay.party",
+          "serverName": "ru-1-7.imnotgay.party",
           "shortId": ""
         },
         "rawSettings": {
@@ -1141,124 +1141,7 @@
       "settings": {
         "vnext": [
           {
-            "address": "185.104.114.92",
-            "port": 443,
-            "users": [
-              {
-                "id": "65616081-1772-49d7-a793-42bc13d22f69",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "raw",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
-        },
-        "realitySettings": {
-          "fingerprint": "qq",
-          "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
-          "serverName": "ru-1-5.imnotgay.party",
-          "shortId": ""
-        },
-        "rawSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-029",
-      "settings": {
-        "vnext": [
-          {
-            "address": "89.23.117.99",
-            "port": 443,
-            "users": [
-              {
-                "id": "65616081-1772-49d7-a793-42bc13d22f69",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "raw",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
-        },
-        "realitySettings": {
-          "fingerprint": "android",
-          "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
-          "serverName": "ru-1-9.imnotgay.party",
-          "shortId": ""
-        },
-        "rawSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-030",
-      "settings": {
-        "vnext": [
-          {
-            "address": "89.23.117.99",
-            "port": 443,
-            "users": [
-              {
-                "id": "65616081-1772-49d7-a793-42bc13d22f69",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "raw",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
-        },
-        "realitySettings": {
-          "fingerprint": "edge",
-          "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
-          "serverName": "ru-1-9.imnotgay.party",
-          "shortId": ""
-        },
-        "rawSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-031",
-      "settings": {
-        "vnext": [
-          {
-            "address": "89.23.117.99",
+            "address": "109.68.214.220",
             "port": 443,
             "users": [
               {
@@ -1281,7 +1164,7 @@
         "realitySettings": {
           "fingerprint": "firefox",
           "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
-          "serverName": "ru-1-9.imnotgay.party",
+          "serverName": "ru-1-7.imnotgay.party",
           "shortId": ""
         },
         "rawSettings": {
@@ -1293,11 +1176,11 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-032",
+      "tag": "node-029",
       "settings": {
         "vnext": [
           {
-            "address": "89.23.117.99",
+            "address": "109.68.214.220",
             "port": 443,
             "users": [
               {
@@ -1320,7 +1203,7 @@
         "realitySettings": {
           "fingerprint": "ios",
           "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
-          "serverName": "ru-1-9.imnotgay.party",
+          "serverName": "ru-1-7.imnotgay.party",
           "shortId": ""
         },
         "rawSettings": {
@@ -1332,11 +1215,89 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-033",
+      "tag": "node-030",
       "settings": {
         "vnext": [
           {
-            "address": "89.23.117.99",
+            "address": "185.104.114.92",
+            "port": 443,
+            "users": [
+              {
+                "id": "65616081-1772-49d7-a793-42bc13d22f69",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "realitySettings": {
+          "fingerprint": "edge",
+          "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
+          "serverName": "ru-1-5.imnotgay.party",
+          "shortId": ""
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-031",
+      "settings": {
+        "vnext": [
+          {
+            "address": "185.104.114.92",
+            "port": 443,
+            "users": [
+              {
+                "id": "65616081-1772-49d7-a793-42bc13d22f69",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "realitySettings": {
+          "fingerprint": "firefox",
+          "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
+          "serverName": "ru-1-5.imnotgay.party",
+          "shortId": ""
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-032",
+      "settings": {
+        "vnext": [
+          {
+            "address": "185.104.114.92",
             "port": 443,
             "users": [
               {
@@ -1359,7 +1320,7 @@
         "realitySettings": {
           "fingerprint": "safari",
           "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
-          "serverName": "ru-1-9.imnotgay.party",
+          "serverName": "ru-1-5.imnotgay.party",
           "shortId": ""
         },
         "rawSettings": {
@@ -1371,89 +1332,11 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-034",
+      "tag": "node-033",
       "settings": {
         "vnext": [
           {
-            "address": "ru-1-8.imnotgay.party",
-            "port": 443,
-            "users": [
-              {
-                "id": "65616081-1772-49d7-a793-42bc13d22f69",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "raw",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
-        },
-        "realitySettings": {
-          "fingerprint": "android",
-          "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
-          "serverName": "ru-1-8.imnotgay.party",
-          "shortId": ""
-        },
-        "rawSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-035",
-      "settings": {
-        "vnext": [
-          {
-            "address": "ru-1-8.imnotgay.party",
-            "port": 443,
-            "users": [
-              {
-                "id": "65616081-1772-49d7-a793-42bc13d22f69",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "raw",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
-        },
-        "realitySettings": {
-          "fingerprint": "chrome",
-          "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
-          "serverName": "ru-1-8.imnotgay.party",
-          "shortId": ""
-        },
-        "rawSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-036",
-      "settings": {
-        "vnext": [
-          {
-            "address": "ru-1-8.imnotgay.party",
+            "address": "94.228.123.217",
             "port": 443,
             "users": [
               {
@@ -1476,7 +1359,7 @@
         "realitySettings": {
           "fingerprint": "edge",
           "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
-          "serverName": "ru-1-8.imnotgay.party",
+          "serverName": "ru-1-2.imnotgay.party",
           "shortId": ""
         },
         "rawSettings": {
@@ -1488,11 +1371,11 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-037",
+      "tag": "node-034",
       "settings": {
         "vnext": [
           {
-            "address": "ru-1-8.imnotgay.party",
+            "address": "94.228.123.217",
             "port": 443,
             "users": [
               {
@@ -1515,7 +1398,7 @@
         "realitySettings": {
           "fingerprint": "firefox",
           "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
-          "serverName": "ru-1-8.imnotgay.party",
+          "serverName": "ru-1-2.imnotgay.party",
           "shortId": ""
         },
         "rawSettings": {
@@ -1527,11 +1410,11 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-038",
+      "tag": "node-035",
       "settings": {
         "vnext": [
           {
-            "address": "ru-1-8.imnotgay.party",
+            "address": "94.228.123.217",
             "port": 443,
             "users": [
               {
@@ -1552,15 +1435,123 @@
           "dialerProxy": "fragment"
         },
         "realitySettings": {
-          "fingerprint": "ios",
+          "fingerprint": "safari",
           "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
-          "serverName": "ru-1-8.imnotgay.party",
+          "serverName": "ru-1-2.imnotgay.party",
           "shortId": ""
         },
         "rawSettings": {
           "header": {
             "type": "none"
           }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-036",
+      "settings": {
+        "vnext": [
+          {
+            "address": "62.152.58.90",
+            "port": 443,
+            "users": [
+              {
+                "id": "1bb2af63-4472-44ed-9c70-8f316258b68b",
+                "encryption": "none"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60
+        },
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "JBKJlzuJH1YzDHAoz28wEKbzWTGpDpKjgtSq0oT0a0k",
+          "serverName": "360.yandex.ru",
+          "shortId": "27e53bbcab7593d7"
+        },
+        "grpcSettings": {
+          "multiMode": false,
+          "serviceName": "grpc-tunnel"
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-037",
+      "settings": {
+        "vnext": [
+          {
+            "address": "62.152.58.90",
+            "port": 443,
+            "users": [
+              {
+                "id": "1bb2af63-4472-44ed-9c70-8f316258b68b",
+                "encryption": "none"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60
+        },
+        "realitySettings": {
+          "fingerprint": "edge",
+          "publicKey": "JBKJlzuJH1YzDHAoz28wEKbzWTGpDpKjgtSq0oT0a0k",
+          "serverName": "360.yandex.ru",
+          "shortId": "27e53bbcab7593d7"
+        },
+        "grpcSettings": {
+          "multiMode": false,
+          "serviceName": "grpc-tunnel"
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-038",
+      "settings": {
+        "vnext": [
+          {
+            "address": "62.152.58.90",
+            "port": 443,
+            "users": [
+              {
+                "id": "1bb2af63-4472-44ed-9c70-8f316258b68b",
+                "encryption": "none"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "reality",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60
+        },
+        "realitySettings": {
+          "fingerprint": "firefox",
+          "publicKey": "JBKJlzuJH1YzDHAoz28wEKbzWTGpDpKjgtSq0oT0a0k",
+          "serverName": "360.yandex.ru",
+          "shortId": "27e53bbcab7593d7"
+        },
+        "grpcSettings": {
+          "multiMode": false,
+          "serviceName": "grpc-tunnel"
         }
       }
     },
@@ -1589,7 +1580,7 @@
           "tcpKeepAliveInterval": 60
         },
         "realitySettings": {
-          "fingerprint": "android",
+          "fingerprint": "ios",
           "publicKey": "JBKJlzuJH1YzDHAoz28wEKbzWTGpDpKjgtSq0oT0a0k",
           "serverName": "360.yandex.ru",
           "shortId": "27e53bbcab7593d7"
@@ -1625,7 +1616,7 @@
           "tcpKeepAliveInterval": 60
         },
         "realitySettings": {
-          "fingerprint": "chrome",
+          "fingerprint": "qq",
           "publicKey": "JBKJlzuJH1YzDHAoz28wEKbzWTGpDpKjgtSq0oT0a0k",
           "serverName": "360.yandex.ru",
           "shortId": "27e53bbcab7593d7"
@@ -1661,7 +1652,7 @@
           "tcpKeepAliveInterval": 60
         },
         "realitySettings": {
-          "fingerprint": "edge",
+          "fingerprint": "random",
           "publicKey": "JBKJlzuJH1YzDHAoz28wEKbzWTGpDpKjgtSq0oT0a0k",
           "serverName": "360.yandex.ru",
           "shortId": "27e53bbcab7593d7"
@@ -1697,7 +1688,7 @@
           "tcpKeepAliveInterval": 60
         },
         "realitySettings": {
-          "fingerprint": "ios",
+          "fingerprint": "safari",
           "publicKey": "JBKJlzuJH1YzDHAoz28wEKbzWTGpDpKjgtSq0oT0a0k",
           "serverName": "360.yandex.ru",
           "shortId": "27e53bbcab7593d7"
@@ -1714,320 +1705,11 @@
       "settings": {
         "vnext": [
           {
-            "address": "62.152.58.90",
+            "address": "ru-1-7.imnotgay.party",
             "port": 443,
             "users": [
               {
-                "id": "1bb2af63-4472-44ed-9c70-8f316258b68b",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "grpc",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60
-        },
-        "realitySettings": {
-          "fingerprint": "qq",
-          "publicKey": "JBKJlzuJH1YzDHAoz28wEKbzWTGpDpKjgtSq0oT0a0k",
-          "serverName": "360.yandex.ru",
-          "shortId": "27e53bbcab7593d7"
-        },
-        "grpcSettings": {
-          "multiMode": false,
-          "serviceName": "grpc-tunnel"
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-044",
-      "settings": {
-        "vnext": [
-          {
-            "address": "90.156.218.163",
-            "port": 443,
-            "users": [
-              {
-                "id": "adc11f30-e4cb-4985-bf5e-f9ded69c019f",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "raw",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
-        },
-        "realitySettings": {
-          "fingerprint": "android",
-          "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
-          "serverName": "eh.vk.ru",
-          "shortId": "db04ce8bdb8900f1"
-        },
-        "rawSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-045",
-      "settings": {
-        "vnext": [
-          {
-            "address": "90.156.218.163",
-            "port": 443,
-            "users": [
-              {
-                "id": "adc11f30-e4cb-4985-bf5e-f9ded69c019f",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "raw",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
-        },
-        "realitySettings": {
-          "fingerprint": "chrome",
-          "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
-          "serverName": "eh.vk.ru",
-          "shortId": "db04ce8bdb8900f1"
-        },
-        "rawSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-046",
-      "settings": {
-        "vnext": [
-          {
-            "address": "90.156.218.163",
-            "port": 443,
-            "users": [
-              {
-                "id": "adc11f30-e4cb-4985-bf5e-f9ded69c019f",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "raw",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
-        },
-        "realitySettings": {
-          "fingerprint": "ios",
-          "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
-          "serverName": "eh.vk.ru",
-          "shortId": "db04ce8bdb8900f1"
-        },
-        "rawSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-047",
-      "settings": {
-        "vnext": [
-          {
-            "address": "90.156.218.163",
-            "port": 443,
-            "users": [
-              {
-                "id": "adc11f30-e4cb-4985-bf5e-f9ded69c019f",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "raw",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
-        },
-        "realitySettings": {
-          "fingerprint": "qq",
-          "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
-          "serverName": "eh.vk.ru",
-          "shortId": "db04ce8bdb8900f1"
-        },
-        "rawSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-048",
-      "settings": {
-        "vnext": [
-          {
-            "address": "90.156.218.163",
-            "port": 443,
-            "users": [
-              {
-                "id": "adc11f30-e4cb-4985-bf5e-f9ded69c019f",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "raw",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
-        },
-        "realitySettings": {
-          "fingerprint": "safari",
-          "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
-          "serverName": "eh.vk.ru",
-          "shortId": "db04ce8bdb8900f1"
-        },
-        "rawSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-049",
-      "settings": {
-        "vnext": [
-          {
-            "address": "90.156.218.163",
-            "port": 443,
-            "users": [
-              {
-                "id": "adc11f30-e4cb-4985-bf5e-f9ded69c019f",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "raw",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
-        },
-        "realitySettings": {
-          "fingerprint": "android",
-          "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
-          "serverName": "eh.vk.ru",
-          "shortId": "db04ce8bdb8900f1"
-        },
-        "rawSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-050",
-      "settings": {
-        "vnext": [
-          {
-            "address": "90.156.218.163",
-            "port": 443,
-            "users": [
-              {
-                "id": "adc11f30-e4cb-4985-bf5e-f9ded69c019f",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "raw",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
-        },
-        "realitySettings": {
-          "fingerprint": "chrome",
-          "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
-          "serverName": "eh.vk.ru",
-          "shortId": "db04ce8bdb8900f1"
-        },
-        "rawSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-051",
-      "settings": {
-        "vnext": [
-          {
-            "address": "90.156.218.163",
-            "port": 443,
-            "users": [
-              {
-                "id": "adc11f30-e4cb-4985-bf5e-f9ded69c019f",
+                "id": "65616081-1772-49d7-a793-42bc13d22f69",
                 "encryption": "none",
                 "flow": "xtls-rprx-vision"
               }
@@ -2045,9 +1727,9 @@
         },
         "realitySettings": {
           "fingerprint": "edge",
-          "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
-          "serverName": "eh.vk.ru",
-          "shortId": "db04ce8bdb8900f1"
+          "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
+          "serverName": "ru-1-7.imnotgay.party",
+          "shortId": ""
         },
         "rawSettings": {
           "header": {
@@ -2058,15 +1740,15 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-052",
+      "tag": "node-044",
       "settings": {
         "vnext": [
           {
-            "address": "90.156.218.163",
+            "address": "ru-1-7.imnotgay.party",
             "port": 443,
             "users": [
               {
-                "id": "adc11f30-e4cb-4985-bf5e-f9ded69c019f",
+                "id": "65616081-1772-49d7-a793-42bc13d22f69",
                 "encryption": "none",
                 "flow": "xtls-rprx-vision"
               }
@@ -2084,9 +1766,9 @@
         },
         "realitySettings": {
           "fingerprint": "firefox",
-          "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
-          "serverName": "eh.vk.ru",
-          "shortId": "db04ce8bdb8900f1"
+          "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
+          "serverName": "ru-1-7.imnotgay.party",
+          "shortId": ""
         },
         "rawSettings": {
           "header": {
@@ -2097,15 +1779,15 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-053",
+      "tag": "node-045",
       "settings": {
         "vnext": [
           {
-            "address": "90.156.218.163",
+            "address": "ru-1-7.imnotgay.party",
             "port": 443,
             "users": [
               {
-                "id": "adc11f30-e4cb-4985-bf5e-f9ded69c019f",
+                "id": "65616081-1772-49d7-a793-42bc13d22f69",
                 "encryption": "none",
                 "flow": "xtls-rprx-vision"
               }
@@ -2123,9 +1805,9 @@
         },
         "realitySettings": {
           "fingerprint": "safari",
-          "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
-          "serverName": "eh.vk.ru",
-          "shortId": "db04ce8bdb8900f1"
+          "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
+          "serverName": "ru-1-7.imnotgay.party",
+          "shortId": ""
         },
         "rawSettings": {
           "header": {
@@ -2136,15 +1818,15 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-054",
+      "tag": "node-046",
       "settings": {
         "vnext": [
           {
-            "address": "90.156.218.163",
+            "address": "217.18.62.73",
             "port": 443,
             "users": [
               {
-                "id": "adc11f30-e4cb-4985-bf5e-f9ded69c019f",
+                "id": "86037609-3790-4901-bd2f-c698092fb1fc",
                 "encryption": "none",
                 "flow": "xtls-rprx-vision"
               }
@@ -2161,10 +1843,322 @@
           "dialerProxy": "fragment"
         },
         "realitySettings": {
-          "fingerprint": "ios",
-          "publicKey": "fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI",
-          "serverName": "eh.vk.ru",
-          "shortId": "db04ce8bdb8900f1"
+          "fingerprint": "chrome",
+          "publicKey": "qmfrMwVYth3lsYuv7qfr22YlTIlNtVjMl0v4Z5pX7hM",
+          "serverName": "sp.skfv-mirror.ru",
+          "shortId": "048fe5c8be4bb687"
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-047",
+      "settings": {
+        "vnext": [
+          {
+            "address": "217.18.62.73",
+            "port": 443,
+            "users": [
+              {
+                "id": "86037609-3790-4901-bd2f-c698092fb1fc",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "realitySettings": {
+          "fingerprint": "firefox",
+          "publicKey": "qmfrMwVYth3lsYuv7qfr22YlTIlNtVjMl0v4Z5pX7hM",
+          "serverName": "sp.skfv-mirror.ru",
+          "shortId": "048fe5c8be4bb687"
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-048",
+      "settings": {
+        "vnext": [
+          {
+            "address": "217.18.62.73",
+            "port": 443,
+            "users": [
+              {
+                "id": "86037609-3790-4901-bd2f-c698092fb1fc",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "realitySettings": {
+          "fingerprint": "safari",
+          "publicKey": "qmfrMwVYth3lsYuv7qfr22YlTIlNtVjMl0v4Z5pX7hM",
+          "serverName": "sp.skfv-mirror.ru",
+          "shortId": "048fe5c8be4bb687"
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-049",
+      "settings": {
+        "vnext": [
+          {
+            "address": "89.23.117.99",
+            "port": 443,
+            "users": [
+              {
+                "id": "65616081-1772-49d7-a793-42bc13d22f69",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "realitySettings": {
+          "fingerprint": "firefox",
+          "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
+          "serverName": "ru-1-9.imnotgay.party",
+          "shortId": ""
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-050",
+      "settings": {
+        "vnext": [
+          {
+            "address": "ru-1-9.imnotgay.party",
+            "port": 443,
+            "users": [
+              {
+                "id": "65616081-1772-49d7-a793-42bc13d22f69",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "realitySettings": {
+          "fingerprint": "firefox",
+          "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
+          "serverName": "ru-1-9.imnotgay.party",
+          "shortId": ""
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-051",
+      "settings": {
+        "vnext": [
+          {
+            "address": "ru-1-9.imnotgay.party",
+            "port": 443,
+            "users": [
+              {
+                "id": "65616081-1772-49d7-a793-42bc13d22f69",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "realitySettings": {
+          "fingerprint": "qq",
+          "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
+          "serverName": "ru-1-9.imnotgay.party",
+          "shortId": ""
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-052",
+      "settings": {
+        "vnext": [
+          {
+            "address": "89.23.117.99",
+            "port": 443,
+            "users": [
+              {
+                "id": "65616081-1772-49d7-a793-42bc13d22f69",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "realitySettings": {
+          "fingerprint": "android",
+          "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
+          "serverName": "ru-1-9.imnotgay.party",
+          "shortId": ""
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-053",
+      "settings": {
+        "vnext": [
+          {
+            "address": "89.23.117.99",
+            "port": 443,
+            "users": [
+              {
+                "id": "65616081-1772-49d7-a793-42bc13d22f69",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "realitySettings": {
+          "fingerprint": "random",
+          "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
+          "serverName": "ru-1-9.imnotgay.party",
+          "shortId": ""
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-054",
+      "settings": {
+        "vnext": [
+          {
+            "address": "ru-1-9.imnotgay.party",
+            "port": 443,
+            "users": [
+              {
+                "id": "65616081-1772-49d7-a793-42bc13d22f69",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg",
+          "serverName": "ru-1-9.imnotgay.party",
+          "shortId": ""
         },
         "rawSettings": {
           "header": {
