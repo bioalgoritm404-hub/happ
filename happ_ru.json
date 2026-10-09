@@ -283,33 +283,34 @@
       "settings": {
         "vnext": [
           {
-            "address": "45.132.176.225",
-            "port": 9881,
+            "address": "nl.alpheratzz.org",
+            "port": 8443,
             "users": [
               {
-                "id": "5d16ac22-6eea-426f-b778-6f4c2961faef",
-                "encryption": "none"
+                "id": "8de76932-518a-4ac8-ac92-be6b1f17ddd8",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "grpc",
-        "security": "reality",
+        "network": "raw",
+        "security": "tls",
         "sockopt": {
           "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
         },
-        "realitySettings": {
-          "fingerprint": "edge",
-          "publicKey": "ycPIUcY6ci2yi7YA_OHc20e4gzxEdJTqpmeShxSuHRU",
-          "serverName": "dl.google.com",
-          "shortId": "aa"
+        "tlsSettings": {
+          "fingerprint": "chrome",
+          "serverName": "api-v1-6ac7858f.vmagnum.win"
         },
-        "grpcSettings": {
-          "multiMode": false,
-          "serviceName": "grpc-tunnel"
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
         }
       }
     },
@@ -319,33 +320,34 @@
       "settings": {
         "vnext": [
           {
-            "address": "45.132.176.225",
-            "port": 9881,
+            "address": "nl.alpheratzz.org",
+            "port": 8443,
             "users": [
               {
-                "id": "5d16ac22-6eea-426f-b778-6f4c2961faef",
-                "encryption": "none"
+                "id": "8de76932-518a-4ac8-ac92-be6b1f17ddd8",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "grpc",
-        "security": "reality",
+        "network": "raw",
+        "security": "tls",
         "sockopt": {
           "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
         },
-        "realitySettings": {
-          "fingerprint": "random",
-          "publicKey": "ycPIUcY6ci2yi7YA_OHc20e4gzxEdJTqpmeShxSuHRU",
-          "serverName": "dl.google.com",
-          "shortId": "aa"
+        "tlsSettings": {
+          "fingerprint": "firefox",
+          "serverName": "api-v1-6ac7858f.vmagnum.win"
         },
-        "grpcSettings": {
-          "multiMode": false,
-          "serviceName": "grpc-tunnel"
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
         }
       }
     },
@@ -355,39 +357,397 @@
       "settings": {
         "vnext": [
           {
-            "address": "45.132.176.225",
-            "port": 9881,
+            "address": "nl.alpheratzz.org",
+            "port": 8443,
             "users": [
               {
-                "id": "5d16ac22-6eea-426f-b778-6f4c2961faef",
-                "encryption": "none"
+                "id": "8de76932-518a-4ac8-ac92-be6b1f17ddd8",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "grpc",
-        "security": "reality",
+        "network": "raw",
+        "security": "tls",
         "sockopt": {
           "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
         },
-        "realitySettings": {
-          "fingerprint": "ios",
-          "publicKey": "ycPIUcY6ci2yi7YA_OHc20e4gzxEdJTqpmeShxSuHRU",
-          "serverName": "dl.google.com",
-          "shortId": "aa"
+        "tlsSettings": {
+          "fingerprint": "chrome",
+          "serverName": "api-v1-6ac7858f.vmagnum.win",
+          "alpn": [
+            "h2"
+          ]
         },
-        "grpcSettings": {
-          "multiMode": false,
-          "serviceName": "grpc-tunnel"
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
         }
       }
     },
     {
       "protocol": "vless",
       "tag": "node-009",
+      "settings": {
+        "vnext": [
+          {
+            "address": "nl.alpheratzz.org",
+            "port": 8443,
+            "users": [
+              {
+                "id": "8de76932-518a-4ac8-ac92-be6b1f17ddd8",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "tls",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "tlsSettings": {
+          "fingerprint": "firefox",
+          "serverName": "api-v1-6ac7858f.vmagnum.win",
+          "alpn": [
+            "h2"
+          ]
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-010",
+      "settings": {
+        "vnext": [
+          {
+            "address": "nl.alpheratzz.org",
+            "port": 8443,
+            "users": [
+              {
+                "id": "8de76932-518a-4ac8-ac92-be6b1f17ddd8",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "tls",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "tlsSettings": {
+          "fingerprint": "safari",
+          "serverName": "api-v1-6ac7858f.vmagnum.win",
+          "alpn": [
+            "h2"
+          ]
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-011",
+      "settings": {
+        "vnext": [
+          {
+            "address": "nl.alpheratzz.org",
+            "port": 8443,
+            "users": [
+              {
+                "id": "8de76932-518a-4ac8-ac92-be6b1f17ddd8",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "tls",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "tlsSettings": {
+          "fingerprint": "edge",
+          "serverName": "api-v1-6ac7858f.vmagnum.win"
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-012",
+      "settings": {
+        "vnext": [
+          {
+            "address": "nl.alpheratzz.org",
+            "port": 8443,
+            "users": [
+              {
+                "id": "8de76932-518a-4ac8-ac92-be6b1f17ddd8",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "tls",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "tlsSettings": {
+          "fingerprint": "safari",
+          "serverName": "api-v1-6ac7858f.vmagnum.win"
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-013",
+      "settings": {
+        "vnext": [
+          {
+            "address": "nl.alpheratzz.org",
+            "port": 8443,
+            "users": [
+              {
+                "id": "8de76932-518a-4ac8-ac92-be6b1f17ddd8",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "tls",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "tlsSettings": {
+          "fingerprint": "android",
+          "serverName": "api-v1-6ac7858f.vmagnum.win",
+          "alpn": [
+            "h2"
+          ]
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-014",
+      "settings": {
+        "vnext": [
+          {
+            "address": "nl.alpheratzz.org",
+            "port": 8443,
+            "users": [
+              {
+                "id": "8de76932-518a-4ac8-ac92-be6b1f17ddd8",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "tls",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "tlsSettings": {
+          "fingerprint": "chrome",
+          "serverName": "api-v1-6ac9122f.vmagnum.win",
+          "alpn": [
+            "h2"
+          ]
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-015",
+      "settings": {
+        "vnext": [
+          {
+            "address": "nl.alpheratzz.org",
+            "port": 8443,
+            "users": [
+              {
+                "id": "8de76932-518a-4ac8-ac92-be6b1f17ddd8",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "tls",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "tlsSettings": {
+          "fingerprint": "firefox",
+          "serverName": "api-v1-6ac9122f.vmagnum.win",
+          "alpn": [
+            "h2"
+          ]
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-016",
+      "settings": {
+        "vnext": [
+          {
+            "address": "nl.alpheratzz.org",
+            "port": 8443,
+            "users": [
+              {
+                "id": "8de76932-518a-4ac8-ac92-be6b1f17ddd8",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "tls",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "tlsSettings": {
+          "fingerprint": "ios",
+          "serverName": "api-v1-6ac9122f.vmagnum.win",
+          "alpn": [
+            "h2"
+          ]
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-017",
+      "settings": {
+        "vnext": [
+          {
+            "address": "nl.alpheratzz.org",
+            "port": 8443,
+            "users": [
+              {
+                "id": "8de76932-518a-4ac8-ac92-be6b1f17ddd8",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "tls",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "tlsSettings": {
+          "fingerprint": "qq",
+          "serverName": "api-v1-6ac9122f.vmagnum.win",
+          "alpn": [
+            "h2"
+          ]
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-018",
       "settings": {
         "vnext": [
           {
@@ -426,340 +786,15 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-010",
-      "settings": {
-        "vnext": [
-          {
-            "address": "31.59.210.24",
-            "port": 2087,
-            "users": [
-              {
-                "id": "5413edfb-08d6-4fba-b51c-809c04feb127",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "grpc",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60
-        },
-        "realitySettings": {
-          "fingerprint": "ios",
-          "publicKey": "W2OLbQ682PLJ9yHQ21Q0nPJk9U8RuL5YnlP-U1fdQzI",
-          "serverName": "www.yandex.ru",
-          "shortId": "a11023050f134216"
-        },
-        "grpcSettings": {
-          "multiMode": false,
-          "serviceName": "astracat"
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-011",
-      "settings": {
-        "vnext": [
-          {
-            "address": "31.59.210.37",
-            "port": 443,
-            "users": [
-              {
-                "id": "5413edfb-08d6-4fba-b51c-809c04feb127",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "grpc",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60
-        },
-        "realitySettings": {
-          "fingerprint": "edge",
-          "publicKey": "5k0dtOSzmshCubdYeKppsUdHU4i2ghaB9uSJSzGjHW4",
-          "serverName": "www.yandex.ru",
-          "shortId": "6dbf4931096f9890"
-        },
-        "grpcSettings": {
-          "multiMode": false,
-          "serviceName": "astracat"
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-012",
-      "settings": {
-        "vnext": [
-          {
-            "address": "31.59.210.37",
-            "port": 443,
-            "users": [
-              {
-                "id": "5413edfb-08d6-4fba-b51c-809c04feb127",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "grpc",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60
-        },
-        "realitySettings": {
-          "fingerprint": "firefox",
-          "publicKey": "5k0dtOSzmshCubdYeKppsUdHU4i2ghaB9uSJSzGjHW4",
-          "serverName": "www.yandex.ru",
-          "shortId": "6dbf4931096f9890"
-        },
-        "grpcSettings": {
-          "multiMode": false,
-          "serviceName": "astracat"
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-013",
-      "settings": {
-        "vnext": [
-          {
-            "address": "31.59.210.37",
-            "port": 443,
-            "users": [
-              {
-                "id": "5413edfb-08d6-4fba-b51c-809c04feb127",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "grpc",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60
-        },
-        "realitySettings": {
-          "fingerprint": "qq",
-          "publicKey": "5k0dtOSzmshCubdYeKppsUdHU4i2ghaB9uSJSzGjHW4",
-          "serverName": "www.yandex.ru",
-          "shortId": "6dbf4931096f9890"
-        },
-        "grpcSettings": {
-          "multiMode": false,
-          "serviceName": "astracat"
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-014",
-      "settings": {
-        "vnext": [
-          {
-            "address": "31.59.210.37",
-            "port": 443,
-            "users": [
-              {
-                "id": "5413edfb-08d6-4fba-b51c-809c04feb127",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "grpc",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60
-        },
-        "realitySettings": {
-          "fingerprint": "safari",
-          "publicKey": "5k0dtOSzmshCubdYeKppsUdHU4i2ghaB9uSJSzGjHW4",
-          "serverName": "www.yandex.ru",
-          "shortId": "6dbf4931096f9890"
-        },
-        "grpcSettings": {
-          "multiMode": false,
-          "serviceName": "astracat"
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-015",
-      "settings": {
-        "vnext": [
-          {
-            "address": "31.59.210.24",
-            "port": 2087,
-            "users": [
-              {
-                "id": "5413edfb-08d6-4fba-b51c-809c04feb127",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "grpc",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60
-        },
-        "realitySettings": {
-          "fingerprint": "safari",
-          "publicKey": "W2OLbQ682PLJ9yHQ21Q0nPJk9U8RuL5YnlP-U1fdQzI",
-          "serverName": "www.yandex.ru",
-          "shortId": "a11023050f134216"
-        },
-        "grpcSettings": {
-          "multiMode": false,
-          "serviceName": "astracat"
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-016",
-      "settings": {
-        "vnext": [
-          {
-            "address": "31.59.210.24",
-            "port": 2087,
-            "users": [
-              {
-                "id": "5413edfb-08d6-4fba-b51c-809c04feb127",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "grpc",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60
-        },
-        "realitySettings": {
-          "fingerprint": "edge",
-          "publicKey": "W2OLbQ682PLJ9yHQ21Q0nPJk9U8RuL5YnlP-U1fdQzI",
-          "serverName": "www.yandex.ru",
-          "shortId": "a11023050f134216"
-        },
-        "grpcSettings": {
-          "multiMode": false,
-          "serviceName": "astracat"
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-017",
-      "settings": {
-        "vnext": [
-          {
-            "address": "31.59.210.24",
-            "port": 2087,
-            "users": [
-              {
-                "id": "5413edfb-08d6-4fba-b51c-809c04feb127",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "grpc",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60
-        },
-        "realitySettings": {
-          "fingerprint": "firefox",
-          "publicKey": "W2OLbQ682PLJ9yHQ21Q0nPJk9U8RuL5YnlP-U1fdQzI",
-          "serverName": "www.yandex.ru",
-          "shortId": "a11023050f134216"
-        },
-        "grpcSettings": {
-          "multiMode": false,
-          "serviceName": "astracat"
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-018",
-      "settings": {
-        "vnext": [
-          {
-            "address": "my.nehtar.ru",
-            "port": 443,
-            "users": [
-              {
-                "id": "ecf728d9-1555-4e12-b178-1d8bd98465e4",
-                "encryption": "none"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
-        },
-        "tlsSettings": {
-          "fingerprint": "android",
-          "serverName": "my.nehtar.ru"
-        },
-        "wsSettings": {
-          "path": "/gateway/v1/ws/6d50d81f0b49c137b1564bce4760eaee",
-          "headers": {
-            "Host": "my.nehtar.ru"
-          }
-        }
-      }
-    },
-    {
-      "protocol": "vless",
       "tag": "node-019",
       "settings": {
         "vnext": [
           {
-            "address": "my.nehtar.ru",
+            "address": "84.201.146.8",
             "port": 443,
             "users": [
               {
-                "id": "ecf728d9-1555-4e12-b178-1d8bd98465e4",
+                "id": "1e2b9c0c-4f9b-56f5-a062-1c4f2d2aa200",
                 "encryption": "none"
               }
             ]
@@ -767,22 +802,21 @@
         ]
       },
       "streamSettings": {
-        "network": "ws",
-        "security": "tls",
+        "network": "xhttp",
+        "security": "reality",
         "sockopt": {
           "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
+          "tcpKeepAliveInterval": 60
         },
-        "tlsSettings": {
-          "fingerprint": "chrome",
-          "serverName": "my.nehtar.ru"
+        "realitySettings": {
+          "fingerprint": "edge",
+          "publicKey": "biyXF3Egpu0ul4Jyf04Vh1Zl6u3JGXJ2k5y5y7pDjgo",
+          "serverName": "max.ru",
+          "shortId": ""
         },
-        "wsSettings": {
-          "path": "/gateway/v1/ws/6d50d81f0b49c137b1564bce4760eaee",
-          "headers": {
-            "Host": "my.nehtar.ru"
-          }
+        "xhttpSettings": {
+          "mode": "auto",
+          "path": "/"
         }
       }
     },
@@ -792,11 +826,11 @@
       "settings": {
         "vnext": [
           {
-            "address": "my.nehtar.ru",
+            "address": "84.201.146.8",
             "port": 443,
             "users": [
               {
-                "id": "ecf728d9-1555-4e12-b178-1d8bd98465e4",
+                "id": "1e2b9c0c-4f9b-56f5-a062-1c4f2d2aa200",
                 "encryption": "none"
               }
             ]
@@ -804,22 +838,21 @@
         ]
       },
       "streamSettings": {
-        "network": "ws",
-        "security": "tls",
+        "network": "xhttp",
+        "security": "reality",
         "sockopt": {
           "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
+          "tcpKeepAliveInterval": 60
         },
-        "tlsSettings": {
-          "fingerprint": "qq",
-          "serverName": "my.nehtar.ru"
+        "realitySettings": {
+          "fingerprint": "ios",
+          "publicKey": "biyXF3Egpu0ul4Jyf04Vh1Zl6u3JGXJ2k5y5y7pDjgo",
+          "serverName": "max.ru",
+          "shortId": ""
         },
-        "wsSettings": {
-          "path": "/gateway/v1/ws/6d50d81f0b49c137b1564bce4760eaee",
-          "headers": {
-            "Host": "my.nehtar.ru"
-          }
+        "xhttpSettings": {
+          "mode": "auto",
+          "path": "/"
         }
       }
     },
@@ -829,36 +862,33 @@
       "settings": {
         "vnext": [
           {
-            "address": "72.56.13.186",
-            "port": 52006,
+            "address": "84.201.146.8",
+            "port": 443,
             "users": [
               {
-                "id": "1f0a8364-ae34-07d0-b999-34a723111ebd",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
+                "id": "1e2b9c0c-4f9b-56f5-a062-1c4f2d2aa200",
+                "encryption": "none"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "raw",
+        "network": "xhttp",
         "security": "reality",
         "sockopt": {
           "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
+          "tcpKeepAliveInterval": 60
         },
         "realitySettings": {
-          "fingerprint": "chrome",
-          "publicKey": "4CH3o5zOMcFNMbnwXnkAg0FFepmsc0QzhahXkUzb1ik",
+          "fingerprint": "qq",
+          "publicKey": "biyXF3Egpu0ul4Jyf04Vh1Zl6u3JGXJ2k5y5y7pDjgo",
           "serverName": "max.ru",
-          "shortId": "d8c6b58bcbb0c323"
+          "shortId": ""
         },
-        "rawSettings": {
-          "header": {
-            "type": "none"
-          }
+        "xhttpSettings": {
+          "mode": "auto",
+          "path": "/"
         }
       }
     },
@@ -868,36 +898,33 @@
       "settings": {
         "vnext": [
           {
-            "address": "103.88.241.10",
+            "address": "84.201.146.8",
             "port": 443,
             "users": [
               {
-                "id": "b9dd5847-412a-4957-bc79-c097037fd7b9",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
+                "id": "1e2b9c0c-4f9b-56f5-a062-1c4f2d2aa200",
+                "encryption": "none"
               }
             ]
           }
         ]
       },
       "streamSettings": {
-        "network": "raw",
+        "network": "xhttp",
         "security": "reality",
         "sockopt": {
           "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
+          "tcpKeepAliveInterval": 60
         },
         "realitySettings": {
-          "fingerprint": "ios",
-          "publicKey": "DrWq_ysFaGPGgRFcHevMPoruwYMRXryW6i_cwE7CuCM",
-          "serverName": "ads.x5.ru",
-          "shortId": "d7e1a2bb"
+          "fingerprint": "safari",
+          "publicKey": "biyXF3Egpu0ul4Jyf04Vh1Zl6u3JGXJ2k5y5y7pDjgo",
+          "serverName": "max.ru",
+          "shortId": ""
         },
-        "rawSettings": {
-          "header": {
-            "type": "none"
-          }
+        "xhttpSettings": {
+          "mode": "auto",
+          "path": "/"
         }
       }
     },
@@ -907,7 +934,7 @@
       "settings": {
         "vnext": [
           {
-            "address": "85.198.80.104",
+            "address": "72.56.13.186",
             "port": 52006,
             "users": [
               {
@@ -946,6 +973,84 @@
       "settings": {
         "vnext": [
           {
+            "address": "103.88.241.10",
+            "port": 443,
+            "users": [
+              {
+                "id": "b9dd5847-412a-4957-bc79-c097037fd7b9",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "realitySettings": {
+          "fingerprint": "ios",
+          "publicKey": "DrWq_ysFaGPGgRFcHevMPoruwYMRXryW6i_cwE7CuCM",
+          "serverName": "ads.x5.ru",
+          "shortId": "d7e1a2bb"
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-025",
+      "settings": {
+        "vnext": [
+          {
+            "address": "85.198.80.104",
+            "port": 52006,
+            "users": [
+              {
+                "id": "1f0a8364-ae34-07d0-b999-34a723111ebd",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "4CH3o5zOMcFNMbnwXnkAg0FFepmsc0QzhahXkUzb1ik",
+          "serverName": "max.ru",
+          "shortId": "d8c6b58bcbb0c323"
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-026",
+      "settings": {
+        "vnext": [
+          {
             "address": "72.56.13.186",
             "port": 52006,
             "users": [
@@ -981,7 +1086,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-025",
+      "tag": "node-027",
       "settings": {
         "vnext": [
           {
@@ -1020,7 +1125,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-026",
+      "tag": "node-028",
       "settings": {
         "vnext": [
           {
@@ -1060,7 +1165,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-027",
+      "tag": "node-029",
       "settings": {
         "vnext": [
           {
@@ -1099,7 +1204,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-028",
+      "tag": "node-030",
       "settings": {
         "vnext": [
           {
@@ -1138,7 +1243,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-029",
+      "tag": "node-031",
       "settings": {
         "vnext": [
           {
@@ -1177,7 +1282,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-030",
+      "tag": "node-032",
       "settings": {
         "vnext": [
           {
@@ -1216,7 +1321,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-031",
+      "tag": "node-033",
       "settings": {
         "vnext": [
           {
@@ -1256,7 +1361,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-032",
+      "tag": "node-034",
       "settings": {
         "vnext": [
           {
@@ -1295,7 +1400,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-033",
+      "tag": "node-035",
       "settings": {
         "vnext": [
           {
@@ -1331,7 +1436,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-034",
+      "tag": "node-036",
       "settings": {
         "vnext": [
           {
@@ -1367,7 +1472,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-035",
+      "tag": "node-037",
       "settings": {
         "vnext": [
           {
@@ -1406,7 +1511,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-036",
+      "tag": "node-038",
       "settings": {
         "vnext": [
           {
@@ -1445,7 +1550,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-037",
+      "tag": "node-039",
       "settings": {
         "vnext": [
           {
@@ -1481,7 +1586,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-038",
+      "tag": "node-040",
       "settings": {
         "vnext": [
           {
@@ -1517,7 +1622,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-039",
+      "tag": "node-041",
       "settings": {
         "vnext": [
           {
@@ -1553,7 +1658,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-040",
+      "tag": "node-042",
       "settings": {
         "vnext": [
           {
@@ -1589,7 +1694,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-041",
+      "tag": "node-043",
       "settings": {
         "vnext": [
           {
@@ -1625,7 +1730,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-042",
+      "tag": "node-044",
       "settings": {
         "vnext": [
           {
@@ -1664,7 +1769,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-043",
+      "tag": "node-045",
       "settings": {
         "vnext": [
           {
@@ -1703,7 +1808,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-044",
+      "tag": "node-046",
       "settings": {
         "vnext": [
           {
@@ -1739,7 +1844,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-045",
+      "tag": "node-047",
       "settings": {
         "vnext": [
           {
@@ -1775,7 +1880,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-046",
+      "tag": "node-048",
       "settings": {
         "vnext": [
           {
@@ -1811,7 +1916,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-047",
+      "tag": "node-049",
       "settings": {
         "vnext": [
           {
@@ -1847,7 +1952,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-048",
+      "tag": "node-050",
       "settings": {
         "vnext": [
           {
@@ -1883,7 +1988,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-049",
+      "tag": "node-051",
       "settings": {
         "vnext": [
           {
@@ -1919,7 +2024,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-050",
+      "tag": "node-052",
       "settings": {
         "vnext": [
           {
@@ -1958,7 +2063,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-051",
+      "tag": "node-053",
       "settings": {
         "vnext": [
           {
@@ -1997,7 +2102,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-052",
+      "tag": "node-054",
       "settings": {
         "vnext": [
           {
@@ -2036,7 +2141,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-053",
+      "tag": "node-055",
       "settings": {
         "vnext": [
           {
@@ -2075,7 +2180,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-054",
+      "tag": "node-056",
       "settings": {
         "vnext": [
           {
@@ -2114,7 +2219,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-055",
+      "tag": "node-057",
       "settings": {
         "vnext": [
           {
@@ -2153,7 +2258,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-056",
+      "tag": "node-058",
       "settings": {
         "vnext": [
           {
@@ -2192,7 +2297,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-057",
+      "tag": "node-059",
       "settings": {
         "vnext": [
           {
@@ -2231,7 +2336,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-058",
+      "tag": "node-060",
       "settings": {
         "vnext": [
           {
@@ -2267,89 +2372,11 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-059",
-      "settings": {
-        "vnext": [
-          {
-            "address": "85.198.80.104",
-            "port": 52006,
-            "users": [
-              {
-                "id": "1f0a8364-ae34-07d0-b999-34a723111ebd",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "raw",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
-        },
-        "realitySettings": {
-          "fingerprint": "chrome",
-          "publicKey": "4CH3o5zOMcFNMbnwXnkAg0FFepmsc0QzhahXkUzb1ik",
-          "serverName": "max.ru",
-          "shortId": "d8c6b58bcbb0c323"
-        },
-        "rawSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-060",
-      "settings": {
-        "vnext": [
-          {
-            "address": "72.56.13.186",
-            "port": 52006,
-            "users": [
-              {
-                "id": "1f0a8364-ae34-07d0-b999-34a723111ebd",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "raw",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
-        },
-        "realitySettings": {
-          "fingerprint": "qq",
-          "publicKey": "4CH3o5zOMcFNMbnwXnkAg0FFepmsc0QzhahXkUzb1ik",
-          "serverName": "max.ru",
-          "shortId": "d8c6b58bcbb0c323"
-        },
-        "rawSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      }
-    },
-    {
-      "protocol": "vless",
       "tag": "node-061",
       "settings": {
         "vnext": [
           {
-            "address": "72.56.13.186",
+            "address": "85.198.80.104",
             "port": 52006,
             "users": [
               {
@@ -2388,6 +2415,84 @@
       "settings": {
         "vnext": [
           {
+            "address": "72.56.13.186",
+            "port": 52006,
+            "users": [
+              {
+                "id": "1f0a8364-ae34-07d0-b999-34a723111ebd",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "realitySettings": {
+          "fingerprint": "qq",
+          "publicKey": "4CH3o5zOMcFNMbnwXnkAg0FFepmsc0QzhahXkUzb1ik",
+          "serverName": "max.ru",
+          "shortId": "d8c6b58bcbb0c323"
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-063",
+      "settings": {
+        "vnext": [
+          {
+            "address": "72.56.13.186",
+            "port": 52006,
+            "users": [
+              {
+                "id": "1f0a8364-ae34-07d0-b999-34a723111ebd",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "sockopt": {
+          "tcpKeepAliveIdle": 300,
+          "tcpKeepAliveInterval": 60,
+          "dialerProxy": "fragment"
+        },
+        "realitySettings": {
+          "fingerprint": "chrome",
+          "publicKey": "4CH3o5zOMcFNMbnwXnkAg0FFepmsc0QzhahXkUzb1ik",
+          "serverName": "max.ru",
+          "shortId": "d8c6b58bcbb0c323"
+        },
+        "rawSettings": {
+          "header": {
+            "type": "none"
+          }
+        }
+      }
+    },
+    {
+      "protocol": "vless",
+      "tag": "node-064",
+      "settings": {
+        "vnext": [
+          {
             "address": "85.192.33.239",
             "port": 8443,
             "users": [
@@ -2423,7 +2528,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-063",
+      "tag": "node-065",
       "settings": {
         "vnext": [
           {
@@ -2462,7 +2567,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-064",
+      "tag": "node-066",
       "settings": {
         "vnext": [
           {
@@ -2501,7 +2606,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-065",
+      "tag": "node-067",
       "settings": {
         "vnext": [
           {
@@ -2540,7 +2645,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-066",
+      "tag": "node-068",
       "settings": {
         "vnext": [
           {
@@ -2579,7 +2684,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-067",
+      "tag": "node-069",
       "settings": {
         "vnext": [
           {
@@ -2618,7 +2723,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-068",
+      "tag": "node-070",
       "settings": {
         "vnext": [
           {
@@ -2657,7 +2762,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-069",
+      "tag": "node-071",
       "settings": {
         "vnext": [
           {
@@ -2696,7 +2801,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-070",
+      "tag": "node-072",
       "settings": {
         "vnext": [
           {
@@ -2735,7 +2840,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-071",
+      "tag": "node-073",
       "settings": {
         "vnext": [
           {
@@ -2774,7 +2879,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-072",
+      "tag": "node-074",
       "settings": {
         "vnext": [
           {
@@ -2813,7 +2918,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-073",
+      "tag": "node-075",
       "settings": {
         "vnext": [
           {
@@ -2852,7 +2957,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-074",
+      "tag": "node-076",
       "settings": {
         "vnext": [
           {
@@ -2891,7 +2996,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-075",
+      "tag": "node-077",
       "settings": {
         "vnext": [
           {
@@ -2930,7 +3035,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-076",
+      "tag": "node-078",
       "settings": {
         "vnext": [
           {
@@ -2969,7 +3074,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-077",
+      "tag": "node-079",
       "settings": {
         "vnext": [
           {
@@ -3008,7 +3113,7 @@
     },
     {
       "protocol": "vless",
-      "tag": "node-078",
+      "tag": "node-080",
       "settings": {
         "vnext": [
           {
@@ -3037,84 +3142,6 @@
           "publicKey": "4CH3o5zOMcFNMbnwXnkAg0FFepmsc0QzhahXkUzb1ik",
           "serverName": "ads.x5.ru",
           "shortId": "d8c6b58bcbb0c323"
-        },
-        "rawSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-079",
-      "settings": {
-        "vnext": [
-          {
-            "address": "51.250.74.50",
-            "port": 443,
-            "users": [
-              {
-                "id": "4ec64061-fc82-42a1-a94d-2a7904554200",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "raw",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
-        },
-        "realitySettings": {
-          "fingerprint": "qq",
-          "publicKey": "1vSZjvhZO01oAEH3b7eebR1qF5dLU1Dq2E7xu8pwGSs",
-          "serverName": "ads.x5.ru",
-          "shortId": "428ef87fd47a3a32"
-        },
-        "rawSettings": {
-          "header": {
-            "type": "none"
-          }
-        }
-      }
-    },
-    {
-      "protocol": "vless",
-      "tag": "node-080",
-      "settings": {
-        "vnext": [
-          {
-            "address": "212.233.78.188",
-            "port": 8443,
-            "users": [
-              {
-                "id": "c6b6b8e0-7a68-4c3b-9aef-ea824322e9cb",
-                "encryption": "none",
-                "flow": "xtls-rprx-vision"
-              }
-            ]
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "raw",
-        "security": "reality",
-        "sockopt": {
-          "tcpKeepAliveIdle": 300,
-          "tcpKeepAliveInterval": 60,
-          "dialerProxy": "fragment"
-        },
-        "realitySettings": {
-          "fingerprint": "chrome",
-          "publicKey": "3llsA5kaSHxfucRLPpW-nsHZC7bKZWEHCL2SIPaAmGY",
-          "serverName": "ads.x5.ru",
-          "shortId": "f6c788"
         },
         "rawSettings": {
           "header": {
